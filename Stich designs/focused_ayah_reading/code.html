@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Focused Ayah Reading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13ec5b",
+              "background-light": "#f6f8f6",
+              "background-dark": "#102216",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"],
+              "arabic": ["Noto Sans Arabic", "serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .arabic-text {
+        direction: rtl;
+        line-height: 1.8;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white transition-colors duration-300">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-[430px] mx-auto bg-background-light dark:bg-background-dark">
+<!-- Top Navigation -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-slate-800 dark:text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer">close</span>
+</div>
+<div class="flex flex-col items-center">
+<h2 class="text-slate-900 dark:text-white text-sm font-bold leading-tight tracking-tight uppercase">Surah Al-Baqarah</h2>
+<p class="text-slate-500 dark:text-[#92c9a4] text-xs font-medium">Ayah 255</p>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-12 bg-transparent text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Focus Mode Indicator -->
+<div class="px-4 py-2">
+<div class="flex items-center justify-between gap-4 rounded-xl border border-primary/20 bg-primary/10 p-3">
+<div class="flex items-center gap-3">
+<div class="flex size-8 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-xs font-bold leading-tight uppercase tracking-wider">Focus Mode Active</p>
+<p class="text-slate-600 dark:text-[#92c9a4] text-[10px] font-normal leading-normal">Distracting apps and notifications are locked.</p>
+</div>
+</div>
+<label class="relative flex h-[24px] w-[44px] cursor-pointer items-center rounded-full border-none bg-primary p-0.5 justify-end">
+<div class="h-full w-[20px] rounded-full bg-white shadow-md"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Main Reading Area (Centered) -->
+<div class="flex-1 flex flex-col justify-center px-6 overflow-y-auto">
+<!-- Arabic Ayah -->
+<div class="mb-10">
+<h1 class="text-slate-900 dark:text-white tracking-normal text-[36px] font-bold leading-relaxed text-center font-arabic arabic-text">
+                    اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ 
+                </h1>
+</div>
+<!-- Translation -->
+<div class="mb-6">
+<p class="text-slate-600 dark:text-[#92c9a4] text-lg font-normal leading-relaxed text-center italic">
+                    "Allah! There is no god ˹worthy of worship˺ except Him, the Ever-Living, All-Sustaining. Neither drowsiness nor sleep overtakes Him."
+                </p>
+</div>
+</div>
+<!-- Bottom UI Section -->
+<div class="p-6 space-y-6 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md rounded-t-3xl border-t border-slate-200 dark:border-white/5">
+<!-- Statistics Row -->
+<div class="flex gap-4">
+<div class="flex flex-1 flex-col gap-1 rounded-2xl p-4 bg-slate-100 dark:bg-[#23482f]/40 border border-slate-200 dark:border-[#326744]">
+<p class="text-slate-500 dark:text-[#92c9a4] text-[11px] font-bold uppercase tracking-widest">Hasanat Earned</p>
+<div class="flex items-baseline gap-1">
+<p class="text-slate-900 dark:text-white text-2xl font-bold leading-tight">+420</p>
+<span class="text-primary text-xs font-bold">✨</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-1 rounded-2xl p-4 bg-slate-100 dark:bg-[#23482f]/40 border border-slate-200 dark:border-[#326744]">
+<p class="text-slate-500 dark:text-[#92c9a4] text-[11px] font-bold uppercase tracking-widest">Daily Streak</p>
+<div class="flex items-baseline gap-1">
+<p class="text-slate-900 dark:text-white text-2xl font-bold leading-tight">12</p>
+<span class="text-orange-400 text-xs font-bold">days</span>
+</div>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<p class="text-slate-500 dark:text-[#92c9a4] text-xs font-medium">Daily Goal: 15 / 20 Ayahs</p>
+<p class="text-primary text-xs font-bold">75%</p>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-[#23482f] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 75%"></div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl h-16 bg-primary text-background-dark gap-3 text-lg font-bold leading-normal tracking-tight active:scale-[0.98] transition-all">
+<span>Next Ayah</span>
+<span class="material-symbols-outlined font-bold">arrow_forward</span>
+<!-- Floating Hasanat Hint -->
+<div class="absolute -top-1 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="bg-white/20 px-2 py-0.5 rounded text-[10px]">+10 Hasanat/letter</span>
+</div>
+</button>
+</div>
+<!-- Home Indicator (iOS style) -->
+<div class="h-1.5 w-32 bg-slate-300 dark:bg-white/20 rounded-full mx-auto mb-2 shrink-0"></div>
+</div>
+</body></html>

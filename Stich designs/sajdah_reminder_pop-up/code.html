@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sajdah Reminder Pop-up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex items-center justify-center p-4">
+<!-- Mock Background Content (Focused Ayah Reading Screen) -->
+<div class="fixed inset-0 z-0 flex flex-col items-center justify-start pt-12 opacity-40 select-none">
+<div class="w-full max-w-md px-6">
+<div class="flex items-center justify-between mb-8">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+<span class="font-bold">Surah Al-Alaq</span>
+<span class="material-symbols-outlined">settings</span>
+</div>
+<div class="text-center space-y-8 mt-20">
+<p class="text-4xl font-serif leading-loose text-right" dir="rtl">
+                    كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِب ۩
+                </p>
+<p class="text-lg italic opacity-80">
+                    "No! Do not obey him. But prostrate and draw near [to Allah]."
+                </p>
+<div class="h-1 w-24 bg-primary/30 mx-auto rounded-full mt-4"></div>
+</div>
+</div>
+</div>
+<!-- Backdrop Dimmer -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-[2px] z-10"></div>
+<!-- Modal Container (iOS Styled Bottom Sheet/Modal) -->
+<div class="relative z-20 w-full max-w-[400px] bg-background-light dark:bg-[#112217] rounded-xl shadow-2xl border border-white/5 overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Bottom Sheet Handle (Visual Cue) -->
+<div class="flex h-5 w-full items-center justify-center pt-2">
+<div class="h-1.5 w-12 rounded-full bg-primary/20"></div>
+</div>
+<!-- Spiritual Icon Section -->
+<div class="flex flex-col items-center pt-8 pb-4">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">
+                    self_improvement
+                </span>
+</div>
+<!-- Headline Text -->
+<h3 class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight px-6 text-center">
+                Sajdah Recommended
+            </h3>
+</div>
+<!-- Body Text -->
+<div class="px-8 pb-6">
+<p class="text-slate-600 dark:text-gray-300 text-base font-normal leading-relaxed text-center">
+                A Prostration of Recitation (Sajdah al-Tilawah) is recommended for this verse. You have reached a moment of deep spiritual connection.
+            </p>
+</div>
+<!-- Visual Divider/Illustration Placeholder -->
+<div class="@container px-4 py-2">
+<div class="w-full bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg min-h-[100px] flex items-center justify-center border border-primary/10 overflow-hidden">
+<div class="flex space-x-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<div class="w-2 h-2 rounded-full bg-primary opacity-60"></div>
+<div class="w-2 h-2 rounded-full bg-primary opacity-30"></div>
+</div>
+</div>
+</div>
+<!-- Button Group -->
+<div class="flex justify-center mt-2 mb-6">
+<div class="flex flex-1 gap-3 w-full flex-col items-stretch px-6 py-3">
+<!-- Primary Action -->
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-wide w-full transition active:scale-95 shadow-lg shadow-primary/20">
+<span class="truncate">I've performed it</span>
+<span class="material-symbols-outlined ml-2 text-xl">done_all</span>
+</button>
+<!-- Secondary Action -->
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-slate-200 dark:bg-[#23482f] text-slate-800 dark:text-white text-base font-bold leading-normal tracking-wide w-full transition active:scale-95">
+<span class="truncate">Dismiss</span>
+</button>
+</div>
+</div>
+<!-- Footer/Hint -->
+<div class="pb-6 text-center">
+<p class="text-xs text-slate-400 dark:text-white/40 font-medium uppercase tracking-widest">
+                Quran Habit • Streak +1
+            </p>
+</div>
+</div>
+</body></html>

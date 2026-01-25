@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dua Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                        "surface-dark": "#1c271f",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<!-- Mobile Container -->
+<div class="relative mx-auto flex h-full min-h-screen w-full max-w-md flex-col overflow-hidden bg-background-light dark:bg-background-dark shadow-xl">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between px-4 py-3 pb-2 sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+<button class="flex size-10 items-center justify-center rounded-full text-slate-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Dua Library</h1>
+<div class="flex size-10 items-center justify-center">
+<button class="flex size-10 items-center justify-center rounded-full text-slate-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Scroll Area -->
+<main class="flex-1 overflow-y-auto pb-20 no-scrollbar">
+<!-- Search Bar -->
+<div class="px-4 py-2">
+<div class="relative flex h-12 w-full items-center overflow-hidden rounded-xl bg-surface-light dark:bg-[#28392e] shadow-sm ring-1 ring-black/5 dark:ring-white/5 focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="flex h-full items-center justify-center px-4 text-slate-400 dark:text-[#9db9a6]">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="h-full w-full border-none bg-transparent p-0 pr-4 text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9db9a6] focus:ring-0" placeholder="Search topic, emotion, or surah..." type="text"/>
+</div>
+</div>
+<!-- Categories Headline -->
+<div class="px-4 pt-6 pb-3 flex items-center justify-between">
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Categories</h2>
+<button class="text-sm font-medium text-primary hover:text-primary/80 transition-colors">See All</button>
+</div>
+<!-- Categories Grid -->
+<div class="grid grid-cols-2 gap-3 px-4">
+<!-- Card 1: Morning & Evening -->
+<button class="group relative flex flex-col items-start justify-between gap-4 overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm ring-1 ring-black/5 dark:ring-white/5 transition-all hover:bg-slate-50 dark:hover:bg-[#233026]">
+<div class="rounded-full bg-orange-100 dark:bg-orange-900/30 p-2.5 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">wb_twilight</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white text-left">Morning &amp; Evening</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 text-left mt-0.5">24 Duas</p>
+</div>
+<div class="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100">
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-600">arrow_outward</span>
+</div>
+</button>
+<!-- Card 2: Travel -->
+<button class="group relative flex flex-col items-start justify-between gap-4 overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm ring-1 ring-black/5 dark:ring-white/5 transition-all hover:bg-slate-50 dark:hover:bg-[#233026]">
+<div class="rounded-full bg-blue-100 dark:bg-blue-900/30 p-2.5 text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">flight</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white text-left">Travel</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 text-left mt-0.5">12 Duas</p>
+</div>
+</button>
+<!-- Card 3: Protection -->
+<button class="group relative flex flex-col items-start justify-between gap-4 overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm ring-1 ring-black/5 dark:ring-white/5 transition-all hover:bg-slate-50 dark:hover:bg-[#233026]">
+<div class="rounded-full bg-purple-100 dark:bg-purple-900/30 p-2.5 text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white text-left">Protection</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 text-left mt-0.5">18 Duas</p>
+</div>
+</button>
+<!-- Card 4: Food & Drink -->
+<button class="group relative flex flex-col items-start justify-between gap-4 overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm ring-1 ring-black/5 dark:ring-white/5 transition-all hover:bg-slate-50 dark:hover:bg-[#233026]">
+<div class="rounded-full bg-emerald-100 dark:bg-emerald-900/30 p-2.5 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white text-left">Food &amp; Drink</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 text-left mt-0.5">8 Duas</p>
+</div>
+</button>
+</div>
+<!-- Featured Dua Headline -->
+<div class="px-4 pt-8 pb-3">
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Featured Dua</h2>
+</div>
+<!-- Featured Dua Card -->
+<div class="px-4">
+<div class="relative overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark p-6 shadow-lg ring-1 ring-black/5 dark:ring-white/5">
+<!-- Card Header -->
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">Daily Reccomendation</span>
+</div>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<!-- Arabic Content -->
+<div class="mb-4 text-center">
+<p class="text-3xl leading-relaxed font-bold text-slate-800 dark:text-white" style="font-family: 'Noto Sans Arabic', serif;">
+                            رَبِّ زِدْنِي عِلْمًا
+                        </p>
+</div>
+<!-- Translation -->
+<div class="mb-6 text-center">
+<p class="mb-1 text-sm font-medium italic text-slate-500 dark:text-slate-400">"Rabbi zidni 'ilma"</p>
+<p class="text-lg font-medium text-slate-700 dark:text-slate-200">"My Lord, increase me in knowledge."</p>
+<p class="mt-2 text-xs text-slate-400 dark:text-slate-500">Surah Taha (20:114)</p>
+</div>
+<!-- Audio Controls -->
+<div class="flex items-center gap-4 rounded-xl bg-slate-50 dark:bg-[#233026] p-3">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-background-dark shadow-sm hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined icon-filled">play_arrow</span>
+</button>
+<div class="flex-1">
+<div class="h-1 w-full rounded-full bg-slate-200 dark:bg-slate-700">
+<div class="h-1 w-1/3 rounded-full bg-primary"></div>
+</div>
+<div class="mt-1 flex justify-between text-[10px] font-medium text-slate-400 dark:text-slate-400">
+<span>0:12</span>
+<span>0:45</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-10"></div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="sticky bottom-0 z-20 w-full border-t border-slate-200 dark:border-white/10 bg-background-light dark:bg-background-dark pb-safe">
+<div class="flex items-center justify-around px-2 py-3">
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary">
+<span class="material-symbols-outlined icon-filled">menu_book</span>
+<span class="text-[10px] font-medium">Library</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="text-[10px] font-medium">Tracker</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

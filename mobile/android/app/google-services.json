@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "681669280196",
+    "project_id": "quran-habit-builder-3cfa9",
+    "storage_bucket": "quran-habit-builder-3cfa9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681669280196:android:d261f12cd456163aaba491",
+        "android_client_info": {
+          "package_name": "com.quranapp.habitbuilder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1olG13okqChL4IhdYLiEVg0mi9dGggY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

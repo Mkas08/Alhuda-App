@@ -1,0 +1,29 @@
+name: Mobile CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.x'
+        channel: 'stable'
+    - name: Install dependencies
+      run: |
+        cd mobile
+        flutter pub get
+    - name: Analyze
+      run: |
+        cd mobile
+        flutter analyze
+    - name: Test
+      run: |
+        cd mobile
+        flutter test

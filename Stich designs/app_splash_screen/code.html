@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Al-Huda Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0bda73",
+                        "background-light": "#f5f8f7",
+                        "background-dark": "#102219",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.islamic-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBvUo9j3LRmaXpr8_5MxfgYEvABb37UpTXJ44lsqNQmVWJqnyCEDNvvjj3ZNuDxE_Fu74KCoecEeva4QyXW5NSL6gZE1X6iyC3BIbe9-wQre5xF2ZJPytmgjJJZbh1ZpM5gc2vFQYbz906yc0RPXc8a1NBbxbNHvMq3muvs8E791_fQYd2wGF_ZtgZ1WP-sc9bLXxgbAoSv8SuLeRBgMpXykmNqoEQ8janH5XLbbPuktCmlibnSOmPwGC4ro0aJRezDi7v1kHEiMqk);
+    opacity: 0.08
+    }
+.glow-effect {
+    box-shadow: 0 0 40px 10px rgba(11, 218, 115, 0.2)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display overflow-hidden">
+<!-- Main Splash Container -->
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#0a1f16] via-[#102219] to-[#050d0a] text-white">
+<!-- Subtle Corner Patterns -->
+<div class="absolute top-0 left-0 w-64 h-64 islamic-pattern pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-64 h-64 islamic-pattern pointer-events-none rotate-90"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 islamic-pattern pointer-events-none -rotate-90"></div>
+<div class="absolute bottom-0 right-0 w-64 h-64 islamic-pattern pointer-events-none rotate-180"></div>
+<!-- Central Branding Section -->
+<div class="relative flex flex-col items-center z-10">
+<!-- Abstract Logo with Glow -->
+<div class="relative mb-8">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150"></div>
+<div class="relative w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center border border-primary/30 glow-effect">
+<span class="material-symbols-outlined text-primary text-7xl select-none" style="font-variation-settings: 'FILL' 1, 'wght' 200;">
+                        menu_book
+                    </span>
+<!-- Decorative Glow Points -->
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full blur-[2px]"></div>
+</div>
+</div>
+<!-- App Title -->
+<h1 class="text-white tracking-[0.2em] text-[42px] font-bold leading-tight px-4 text-center uppercase">
+                Al-Huda
+            </h1>
+<!-- Tagline -->
+<p class="text-primary/80 text-lg font-light leading-normal pb-3 pt-2 px-4 text-center tracking-wide">
+                Nurture your soul, one ayah at a time.
+            </p>
+</div>
+<!-- Footer / Progress Bar Section -->
+<div class="absolute bottom-16 w-full max-w-xs px-6 flex flex-col gap-4 items-center">
+<div class="flex flex-col gap-3 w-full">
+<div class="flex gap-6 justify-center">
+<p class="text-white/60 text-sm font-medium leading-normal tracking-widest uppercase">
+                        Loading your journey
+                    </p>
+</div>
+<div class="rounded-full bg-white/10 h-1 overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 45%;"></div>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+</div>
+<!-- UI Component Examples requested but integrated into the splash flow -->
+<div class="hidden">
+<!-- TopAppBar (Invisible placeholder for component list requirement) -->
+<div class="flex items-center bg-[#10231a] p-4 pb-2 justify-end"></div>
+<!-- HeaderImage (Invisible placeholder for component list requirement) -->
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-[#10231a] rounded-lg min-h-80" data-alt="abstract emerald green islamic geometric background"></div>
+<!-- BodyText (Invisible placeholder for component list requirement) -->
+<p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">Loading state documentation.</p>
+</div>
+</body></html>

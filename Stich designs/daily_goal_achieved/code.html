@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Daily Goal Achieved</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#13ec5b",
+                "background-light": "#f6f8f6",
+                "background-dark": "#102216",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .bg-glow {
+            background: radial-gradient(circle at center, rgba(19, 236, 91, 0.15) 0%, rgba(16, 34, 22, 0) 70%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col group/design-root overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-2xl">close</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Daily Success</h2>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<!-- Success Icon/Animation Placeholder -->
+<div class="relative mt-8 mb-4">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+<div class="relative bg-primary/10 border-2 border-primary/30 p-6 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-7xl font-light">task_alt</span>
+</div>
+</div>
+<!-- Headline -->
+<div class="px-6">
+<h1 class="text-white tracking-light text-[32px] font-extrabold leading-tight text-center pb-1">Mubarak!</h1>
+<p class="text-primary/90 text-center text-lg font-medium">Daily Goal Achieved</p>
+</div>
+<!-- Stats Grid -->
+<div class="flex flex-wrap gap-3 p-4 w-full mt-6">
+<div class="flex min-w-[140px] flex-1 flex-col gap-2 rounded-xl p-5 bg-[#1a3322] border border-white/5 shadow-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">auto_awesome</span>
+<p class="text-white/70 text-sm font-medium leading-normal">Hasanat Earned</p>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-white tracking-tight text-3xl font-extrabold leading-tight">+540</p>
+<p class="text-primary text-xs font-bold leading-normal">+15%</p>
+</div>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-2 rounded-xl p-5 bg-[#1a3322] border border-white/5 shadow-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-400 text-xl">local_fire_department</span>
+<p class="text-white/70 text-sm font-medium leading-normal">Daily Streak</p>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-white tracking-tight text-3xl font-extrabold leading-tight">12 Days</p>
+<p class="text-primary text-xs font-bold leading-normal">+1 day</p>
+</div>
+</div>
+</div>
+<!-- Quranic Quote Card -->
+<div class="p-4 w-full">
+<div class="bg-cover bg-center flex flex-col items-stretch justify-end rounded-xl overflow-hidden shadow-xl min-h-[180px] relative group" data-alt="Calm Islamic art pattern with soft green hues">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+<div class="absolute inset-0 bg-[#1a3322]/40"></div>
+<div class="flex w-full items-end justify-between gap-4 p-6 relative z-10">
+<div class="flex flex-1 flex-col gap-3">
+<span class="material-symbols-outlined text-primary/60 text-2xl">format_quote</span>
+<p class="text-white tracking-tight text-xl font-semibold leading-relaxed italic">
+                                "So remember Me; I will remember you..."
+                            </p>
+<div class="h-px w-12 bg-primary/40"></div>
+<p class="text-white/60 text-xs font-bold uppercase tracking-widest">Surah Al-Baqarah 152</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Engagement Section -->
+<div class="mt-auto w-full p-4 flex flex-col gap-3 pb-8">
+<button class="w-full bg-primary hover:bg-primary/90 text-[#102216] font-extrabold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined font-bold">share</span>
+                    Share with Community
+                </button>
+<div class="flex flex-col items-center gap-4">
+<p class="text-white/50 text-xs font-medium">Inspire 542 others reading Surah Al-Baqarah today</p>
+<button class="text-white/70 hover:text-white text-sm font-bold py-2 transition-colors">
+                        Back to Dashboard
+                    </button>
+</div>
+</div>
+</div>
+<!-- Decorative background elements -->
+<div class="absolute top-[-10%] left-[-20%] w-72 h-72 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+</div>
+</body></html>
