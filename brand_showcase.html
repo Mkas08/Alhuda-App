@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Huda | Emerald Night Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors from design-tokens.json */
+            --emerald-primary: #13ec5b;
+            --emerald-light: #4ff285;
+            --emerald-dark: #0bc948;
+            --emerald-glow: rgba(19, 236, 91, 0.3);
+            --emerald-glow-strong: rgba(19, 236, 91, 0.5);
+            
+            --gold: #d4af37;
+            --gold-light: #e8c963;
+            --orange: #f97316;
+            
+            --deep-forest: #102216;
+            --surface-dark: #1c271f;
+            --surface-elevated: #23482f;
+            
+            --text-primary: #ffffff;
+            --text-secondary: #9db9a6;
+            --text-tertiary: #92c9a4;
+            --text-muted: rgba(255, 255, 255, 0.4);
+            
+            --border-dark: rgba(255, 255, 255, 0.05);
+            
+            /* Spacing */
+            --spacing-1: 4px;
+            --spacing-2: 8px;
+            --spacing-3: 12px;
+            --spacing-4: 16px;
+            --spacing-6: 24px;
+            --spacing-8: 32px;
+            --spacing-12: 48px;
+            
+            /* Radius */
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            
+            /* Durations */
+            --fast: 150ms;
+            --normal: 300ms;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--deep-forest);
+            color: var(--text-primary);
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            /* Islamic Dots Pattern */
+            background-image: radial-gradient(var(--surface-dark) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        h1, h2, h3, .display-font {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-12) var(--spacing-6);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: var(--spacing-12) 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .logo-box {
+            width: 100px;
+            height: 100px;
+            background: var(--emerald-primary);
+            margin: 0 auto var(--spacing-6);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px var(--emerald-glow);
+            transition: var(--normal);
+        }
+
+        .logo-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px var(--emerald-glow-strong);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            color: var(--emerald-primary);
+            margin-bottom: var(--spacing-2);
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* --- Grid Layout --- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-8);
+            border-bottom: 2px solid var(--border-dark);
+            padding-bottom: var(--spacing-2);
+            display: inline-block;
+        }
+
+        .brand-section {
+            margin-bottom: 100px;
+        }
+
+        /* --- Palette --- */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-6);
+        }
+
+        .color-card {
+            background: var(--surface-dark);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-dark);
+        }
+
+        .color-swatch {
+            height: 120px;
+        }
+
+        .color-info {
+            padding: var(--spacing-4);
+        }
+
+        .color-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .color-hex {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            opacity: 0.8;
+        }
+
+        /* --- Typography --- */
+        .typo-sample {
+            background: var(--surface-dark);
+            padding: var(--spacing-8);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-dark);
+        }
+
+        .arabic-sample {
+            font-family: 'Noto Sans Arabic', serif;
+            font-size: 2.5rem;
+            direction: rtl;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin: var(--spacing-6) 0;
+            padding: var(--spacing-4);
+            background: var(--surface-elevated);
+            border-radius: var(--radius-md);
+        }
+
+        /* --- Components --- */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-8);
+        }
+
+        .card-demo {
+            background: var(--surface-dark);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-6);
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--emerald-primary);
+            color: var(--deep-forest);
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            padding: 16px var(--spacing-6);
+            border-radius: var(--radius-lg);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px var(--emerald-glow);
+            transition: var(--normal);
+        }
+
+        .btn-primary:hover {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px var(--emerald-glow);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: var(--surface-elevated);
+            border-radius: var(--radius-full);
+            margin: var(--spacing-4) 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--emerald-primary);
+            width: 70%;
+            box-shadow: 0 0 10px var(--emerald-primary);
+            animation: pulse 2s infinite;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* --- Glassmorphism Effect --- */
+        .glass {
+            background: rgba(16, 34, 22, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: var(--spacing-12);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--surface-elevated);
+            color: var(--gold);
+            margin-bottom: var(--spacing-4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="logo-box">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21C12 21 3 16 3 10V5L12 2L21 5V10C21 16 12 21 12 21Z" stroke="#102216" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 12V17" stroke="#102216" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="8" r="1.5" fill="#102216"/>
+                </svg>
+            </div>
+            <h1>Al-Huda</h1>
+            <p>Nurture your soul, one ayah at a time.</p>
+        </header>
+
+        <!-- Section: Core Identity -->
+        <section class="brand-section">
+            <h2 class="section-title">Design Philosophy</h2>
+            <div class="palette-grid">
+                <div class="color-card" style="grid-column: span 2;">
+                    <div class="color-info">
+                        <p style="color: var(--text-secondary);">Emerald Night is designed to evoke <strong>spiritual serenity</strong>. The deep forest backgrounds represent the quiet reflection of late-night reading, while the glowing emerald accents symbolize growth, life, and the "Nur" (light) of the Quran.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Color Palette -->
+        <section class="brand-section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="palette-grid">
+                <!-- Emeralds -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--emerald-primary);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Emerald Primary</span><br>
+                        <span class="color-hex">#13EC5B</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--emerald-light);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Emerald Light</span><br>
+                        <span class="color-hex">#4FF285</span>
+                    </div>
+                </div>
+                <!-- Backgrounds -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--deep-forest);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Deep Forest</span><br>
+                        <span class="color-hex">#102216</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--surface-dark);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Surface Dark</span><br>
+                        <span class="color-hex">#1C271F</span>
+                    </div>
+                </div>
+                <!-- Accents -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--gold);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Gold Accent</span><br>
+                        <span class="color-hex">#D4AF37</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--orange);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Streak Orange</span><br>
+                        <span class="color-hex">#F97316</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Typography -->
+        <section class="brand-section">
+            <h2 class="section-title">Typography</h2>
+            <div class="typo-sample">
+                <div style="margin-bottom: var(--spacing-8);">
+                    <span class="badge">Display (Lexend)</span>
+                    <h3 style="font-size: 2.5rem; color: var(--text-primary);">Nurture Your Soul</h3>
+                    <p style="color: var(--text-muted);">Lexend is used for high-impact headers and navigation.</p>
+                </div>
+                <div style="margin-bottom: var(--spacing-8);">
+                    <span class="badge">Body (Manrope)</span>
+                    <p style="font-size: 1rem; color: var(--text-secondary); max-width: 600px;">
+                        Manrope provides a clean, modern, and highly readable experience for translations and community content. It balances perfectly with the geometric display font.
+                    </p>
+                </div>
+                <div>
+                    <span class="badge">Quranic (Noto Sans Arabic)</span>
+                    <div class="arabic-sample">
+                        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Components UI -->
+        <section class="brand-section">
+            <h2 class="section-title">UI Components</h2>
+            <div class="component-grid">
+                <!-- Action Cards -->
+                <div class="card-demo glass">
+                    <span class="badge">Glassmorphism</span>
+                    <h3 style="margin-bottom: var(--spacing-2);">Daily Reading Goal</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--spacing-4);">You are 70% towards your goal of 10 ayahs.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p style="text-align: right; color: var(--emerald-primary); font-size: 0.8rem; font-weight: 700;">7 / 10 AYAS</p>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="card-demo">
+                    <span class="badge">Interaction</span>
+                    <h3 style="margin-bottom: var(--spacing-4);">Spiritual Growth</h3>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: var(--spacing-6);">Tap below to start your focused reading session and earn hasanat.</p>
+                    <button class="btn-primary">START READING</button>
+                </div>
+                
+                <!-- Stat Card -->
+                <div class="card-demo" style="background: var(--surface-elevated);">
+                    <span class="badge">Elevated Surface</span>
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold);">4,230</div>
+                        <div>
+                            <p style="font-family: 'Lexend'; font-weight: 600;">Hasanat Earned</p>
+                            <p style="color: var(--text-tertiary); font-size: 0.7rem;">+350 this week</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Al-Huda | Built with Emerald Night Design System</p>
+    </footer>
+
+</body>
+</html>

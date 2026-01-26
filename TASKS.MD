@@ -102,69 +102,67 @@
   - [ ] Set up logging configuration
 
 #### Database Connection & ORM
-- [ ] Set up SQLAlchemy
-  - [ ] Create database.py with connection logic
-  - [ ] Configure async SQLAlchemy session
-  - [ ] Create Base model class
-  - [ ] Set up connection pooling
-  - [ ] Add health check endpoint
-- [ ] Initialize Alembic
-  - [ ] Run `alembic init`
-  - [ ] Configure alembic.ini
-  - [ ] Create initial migration
-  - [ ] Test migration up/down
+- [x] Set up database connection
+- [x] Create `database.py` with async SQLAlchemy session
+- [x] Configure connection pooling
+- [x] Add health check endpoint
+- [x] Initialize Alembic
+- [x] Run first migration (create initial schema)
+  - [x] Configure alembic.ini
+  - [x] Create initial migration
+  - [x] Test migration up/down
 
 #### Core Models (SQLAlchemy)
-- [ ] Create User model
-  - [ ] Fields: user_id, email, username, password_hash
-  - [ ] Add timestamps (created_at, updated_at)
-  - [ ] Add indexes on email and username
-  - [ ] Add unique constraints
-- [ ] Create UserProfile model
-  - [ ] Fields: user_id, display_name, profile_picture_url, bio
-  - [ ] Add privacy_level field
-  - [ ] Foreign key to User
-- [ ] Create UserLocation model
-  - [ ] Fields: user_id, latitude, longitude, city, country, timezone
-  - [ ] Foreign key to User
-- [ ] Create Quran data models
-  - [ ] QuranVerse model
-  - [ ] QuranTranslation model
-  - [ ] QuranSurah model
-- [ ] Create goal and progress models
-  - [ ] UserGoal model
-  - [ ] UserStats model
-  - [ ] ReadingSession model
-  - [ ] VerseReadHistory model
+- [x] Create User model
+  - [x] Fields: user_id, email, username, password_hash
+  - [x] Add timestamps (created_at, updated_at)
+  - [x] Add indexes on email and username
+  - [x] Add unique constraints
+- [x] Create UserProfile model
+  - [x] Fields: user_id, display_name, profile_picture_url, bio
+  - [x] Add privacy_level field
+  - [x] Foreign key to User
+- [x] Create UserLocation model
+  - [x] Fields: user_id, latitude, longitude, city, country, timezone
+  - [x] Foreign key to User
+- [x] Create Quran data models
+  - [x] QuranVerse model
+  - [x] QuranTranslation model
+  - [x] QuranSurah model
+- [x] Create goal and progress models
+  - [x] UserGoal model
+  - [x] UserStats model
+  - [x] ReadingSession model
+  - [x] VerseReadHistory model
 
 #### Authentication System
-- [ ] Implement JWT authentication
-  - [ ] Install python-jose and passlib
-  - [ ] Create password hashing utilities
-  - [ ] Create JWT token generation function
-  - [ ] Create JWT token verification function
-  - [ ] Set token expiration (15 min access, 7 days refresh)
-  - [ ] Create authentication dependencies
-- [ ] Create auth endpoints
-  - [ ] POST /api/v1/auth/register
-  - [ ] POST /api/v1/auth/login
-  - [ ] POST /api/v1/auth/refresh
-  - [ ] POST /api/v1/auth/logout
-  - [ ] GET /api/v1/auth/me (current user)
-- [ ] Add input validation (Pydantic schemas)
-  - [ ] UserRegisterRequest schema
-  - [ ] UserLoginRequest schema
-  - [ ] TokenResponse schema
-  - [ ] Validate email format
-  - [ ] Validate password strength (min 8 chars, complexity)
+- [x] Implement JWT authentication
+  - [x] Install python-jose and passlib
+  - [x] Create password hashing utilities
+  - [x] Create JWT token generation function
+  - [x] Create JWT token verification function
+  - [x] Set token expiration (15 min access, 7 days refresh)
+  - [x] Create authentication dependencies
+- [x] Create auth endpoints
+  - [x] POST /api/v1/auth/register
+  - [x] POST /api/v1/auth/login
+  - [x] POST /api/v1/auth/refresh
+  - [x] POST /api/v1/auth/logout
+  - [x] GET /api/v1/auth/me (current user)
+- [x] Add input validation (Pydantic schemas)
+  - [x] UserRegisterRequest schema
+  - [x] UserLoginRequest schema
+  - [x] TokenResponse schema
+  - [x] Validate email format
+  - [x] Validate password strength (min 8 chars, complexity)
 
 #### Testing Setup
-- [ ] Configure pytest
-  - [ ] Create conftest.py with fixtures
-  - [ ] Create test database setup/teardown
-  - [ ] Create mock user factory
-  - [ ] Write auth endpoint tests (registration, login)
-  - [ ] Aim for 80%+ coverage on critical paths
+- [x] Configure pytest
+  - [x] Create conftest.py with fixtures
+  - [x] Create test database setup/teardown
+  - [x] Create mock user factory
+  - [x] Write auth endpoint tests (registration, login)
+  - [x] Aim for 80%+ coverage on critical paths
 
 ---
 
@@ -179,65 +177,49 @@
   - [ ] Add all required dependencies to pubspec.yaml
   - [ ] Run `flutter pub get`
 
-#### Project Structure
-- [ ] Set up clean architecture folders
-  ```
-  lib/
-  ├── core/
-  │   ├── constants/
-  │   ├── theme/
-  │   ├── utils/
-  │   └── network/
-  ├── features/
-  │   ├── auth/
-  │   │   ├── data/
-  │   │   ├── domain/
-  │   │   └── presentation/
-  │   ├── onboarding/
-  │   ├── quran/
-  │   └── goals/
-  └── shared/
-  ```
-- [ ] Create each feature module structure
-  - [ ] data/ (models, repositories, datasources)
-  - [ ] domain/ (entities, repositories, usecases)
-  - [ ] presentation/ (screens, widgets, providers)
+### Milestone 1.3: Mobile App Foundation
+**Goal:** Establish the basic structure and core services of the Flutter application.
 
-#### Core Configuration
-- [ ] Set up app theme
-  - [ ] Define color palette (Islamic green, gold, purple)
-  - [ ] Configure light and dark themes
-  - [ ] Set up text styles (Arabic and Latin fonts)
-  - [ ] Create theme constants file
-- [ ] Configure navigation
-  - [ ] Install go_router package
-  - [ ] Create route configuration
-  - [ ] Define route names constants
-  - [ ] Set up route guards (authentication)
-- [ ] Set up state management
-  - [ ] Install flutter_riverpod
-  - [ ] Create provider scope wrapper
-  - [ ] Set up global providers container
+#### Project Initialization
+- [x] Create Flutter project structure
+  - [x] Folders: core/, features/, shared/, config/
+- [x] Configure analysis_options.yaml (strict linting)
+- [x] Add core dependencies to pubspec.yaml
+  - [x] flutter_riverpod, go_router, dio, hive, sentry
+
+#### "Emerald Night" branding & UI foundation
+- [x] Define ColorPalette and Material 3 ColorScheme
+- [x] Implement ThemeExtension for custom tokens (emerald glow)
+- [x] Configure typograph with Google Fonts
+  - [x] Display: Lexend
+  - [x] Body: Manrope
+  - [x] Arabic: Noto Sans Arabic
+- [x] Create AppTheme class managing light and dark themes
+
+#### Routing & Navigation
+- [x] Configure go_router
+- [x] Define initial routes and shell behavior
+- [x] Create custom SplashPage with brand animation placeholder
+
+#### Infrastructure Layer
+- [x] Create base Failure and domain-level error handling
 
 #### Network Layer
-- [ ] Set up Dio HTTP client
-  - [ ] Create DioClient class
-  - [ ] Add interceptors (logging, auth token)
-  - [ ] Configure base URL from environment
-  - [ ] Add timeout configuration
-  - [ ] Create error handling interceptor
-- [ ] Create API client services
+- [x] Set up Dio HTTP client
+  - [x] Create DioClient class
+  - [x] Add interceptors (logging, auth token placeholder)
+  - [x] Configure base URL and timeouts
+- [ ] Create API client services (Pending feature implementation)
   - [ ] AuthApiClient
   - [ ] QuranApiClient
   - [ ] UserApiClient
-  - [ ] Define all endpoint methods
 
 #### Local Storage
-- [ ] Set up Hive
-  - [ ] Initialize Hive in main.dart
-  - [ ] Create adapters for models
-  - [ ] Create local storage service
-  - [ ] Implement secure storage for tokens (flutter_secure_storage)
+- [x] Set up Hive
+  - [x] Initialize Hive in main.dart
+  - [x] Create local storage service
+  - [x] Implement secure storage for tokens (flutter_secure_storage)
+  - [ ] Create adapters for models (Pending model definitions)
 
 #### Platform-Specific Configuration
 - [ ] Android configuration

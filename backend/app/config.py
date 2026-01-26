@@ -20,6 +20,12 @@ class Settings(BaseSettings):
     # Sentry
     SENTRY_DSN_BACKEND: str | None = None
 
+    # Auth
+    SECRET_KEY: str = "dev_secret_key_change_me_in_production"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+
     # SMTP
     SMTP_PORT: int = 465
     SMTP_TLS: bool = False

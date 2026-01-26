@@ -23,7 +23,7 @@ class UserStats(Base, TimestampMixin):
     current_streak: Mapped[int] = mapped_column(Integer, default=0)
     longest_streak: Mapped[int] = mapped_column(Integer, default=0)
 
-class ReadingSession(Base):
+class ReadingSession(Base, TimestampMixin):
     __tablename__ = "reading_sessions"
 
     session_id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
@@ -36,7 +36,7 @@ class ReadingSession(Base):
     goal_achieved: Mapped[bool] = mapped_column(default=False)
     session_type: Mapped[str] = mapped_column(String(20), default="spontaneous")  # scheduled, spontaneous
 
-class VerseReadHistory(Base):
+class VerseReadHistory(Base, TimestampMixin):
     __tablename__ = "verse_read_history"
 
     history_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
