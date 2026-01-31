@@ -34,18 +34,27 @@ class DesignSystemExtension extends ThemeExtension<DesignSystemExtension> {
   }
 
   @override
-  DesignSystemExtension lerp(ThemeExtension<DesignSystemExtension>? other, double t) {
-    if (other is! DesignSystemExtension) return this;
+  DesignSystemExtension lerp(
+    ThemeExtension<DesignSystemExtension>? other,
+    double t,
+  ) {
+    if (other is! DesignSystemExtension) {
+      return this;
+    }
     return DesignSystemExtension(
       emeraldGlow: Color.lerp(emeraldGlow, other.emeraldGlow, t)!,
-      emeraldGlowStrong: Color.lerp(emeraldGlowStrong, other.emeraldGlowStrong, t)!,
+      emeraldGlowStrong: Color.lerp(
+        emeraldGlowStrong,
+        other.emeraldGlowStrong,
+        t,
+      )!,
       surfaceElevated: Color.lerp(surfaceElevated, other.surfaceElevated, t)!,
       primaryShadow: BoxShadow.lerp(primaryShadow, other.primaryShadow, t)!,
       primaryGlow: BoxShadow.lerp(primaryGlow, other.primaryGlow, t)!,
     );
   }
 
-  static const dark = DesignSystemExtension(
+  static const DesignSystemExtension dark = DesignSystemExtension(
     emeraldGlow: AppColors.emeraldGlow,
     emeraldGlowStrong: AppColors.emeraldGlowStrong,
     surfaceElevated: AppColors.surfaceElevated,
@@ -63,5 +72,6 @@ class DesignSystemExtension extends ThemeExtension<DesignSystemExtension> {
 }
 
 extension DesignSystemContext on BuildContext {
-  DesignSystemExtension get designSystem => Theme.of(this).extension<DesignSystemExtension>()!;
+  DesignSystemExtension get designSystem =>
+      Theme.of(this).extension<DesignSystemExtension>()!;
 }

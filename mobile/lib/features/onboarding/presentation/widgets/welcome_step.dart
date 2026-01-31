@@ -8,18 +8,26 @@ class WelcomeStep extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         Container(
           width: 120,
           height: 120,
           decoration: BoxDecoration(
             color: AppColors.emeraldPrimary,
             borderRadius: BorderRadius.circular(32),
-            boxShadow: const [
-              BoxShadow(color: AppColors.emeraldGlow, blurRadius: 40, spreadRadius: 10),
+            boxShadow: const <BoxShadow>[
+              BoxShadow(
+                color: AppColors.emeraldGlow,
+                blurRadius: 40,
+                spreadRadius: 10,
+              ),
             ],
           ),
-          child: const Icon(Icons.star_rounded, size: 80, color: AppColors.onPrimary),
+          child: const Icon(
+            Icons.star_rounded,
+            size: 80,
+            color: AppColors.onPrimary,
+          ),
         ),
         const SizedBox(height: 48),
         const Text(

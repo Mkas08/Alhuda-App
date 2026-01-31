@@ -8,12 +8,18 @@ class PrayerTimesStep extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(onboardingProvider);
-    final prayerTimes = ['After Fajr', 'After Dhuhr', 'After Asr', 'After Maghrib', 'After Isha'];
+    final OnboardingData data = ref.watch(onboardingProvider);
+    final List<String> prayerTimes = <String>[
+      'After Fajr',
+      'After Dhuhr',
+      'After Asr',
+      'After Maghrib',
+      'After Isha',
+    ];
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         const Text(
           'BEST TIMES TO READ',
           style: TextStyle(
@@ -35,25 +41,36 @@ class PrayerTimesStep extends ConsumerWidget {
           spacing: 12,
           runSpacing: 16,
           alignment: WrapAlignment.center,
-          children: prayerTimes.map((time) {
-            final isSelected = data.preferredTimes.contains(time);
+          children: prayerTimes.map((String time) {
+            final bool isSelected = data.preferredTimes.contains(time);
             return GestureDetector(
-              onTap: () => ref.read(onboardingProvider.notifier).togglePreferredTime(time),
+              onTap: () => ref
+                  .read(onboardingProvider.notifier)
+                  .togglePreferredTime(time),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.emeraldPrimary : AppColors.surfaceDark,
+                  color: isSelected
+                      ? AppColors.emeraldPrimary
+                      : AppColors.surfaceDark,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: isSelected ? AppColors.emeraldPrimary : AppColors.borderDark,
+                    color: isSelected
+                        ? AppColors.emeraldPrimary
+                        : AppColors.borderDark,
                     width: 2,
                   ),
                 ),
                 child: Text(
                   time,
                   style: TextStyle(
-                    color: isSelected ? AppColors.onPrimary : AppColors.textPrimary,
+                    color: isSelected
+                        ? AppColors.onPrimary
+                        : AppColors.textPrimary,
                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                   ),
                 ),

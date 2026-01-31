@@ -8,11 +8,11 @@ class GoalTypeStep extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(onboardingProvider);
+    final OnboardingData data = ref.watch(onboardingProvider);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         const Text(
           'WHAT IS YOUR GOAL?',
           style: TextStyle(
@@ -30,11 +30,32 @@ class GoalTypeStep extends ConsumerWidget {
           style: TextStyle(color: AppColors.textSecondary, fontSize: 16),
         ),
         const SizedBox(height: 48),
-        _buildOption(context, ref, GoalType.verse, 'Verse-based', 'Read a specific number of ayahs', data.goalType),
+        _buildOption(
+          context,
+          ref,
+          GoalType.verse,
+          'Verse-based',
+          'Read a specific number of ayahs',
+          data.goalType,
+        ),
         const SizedBox(height: 16),
-        _buildOption(context, ref, GoalType.time, 'Time-based', 'Dedicate focused reading time', data.goalType),
+        _buildOption(
+          context,
+          ref,
+          GoalType.time,
+          'Time-based',
+          'Dedicate focused reading time',
+          data.goalType,
+        ),
         const SizedBox(height: 16),
-        _buildOption(context, ref, GoalType.page, 'Page-based', 'Read a fixed number of pages', data.goalType),
+        _buildOption(
+          context,
+          ref,
+          GoalType.page,
+          'Page-based',
+          'Read a fixed number of pages',
+          data.goalType,
+        ),
       ],
     );
   }
@@ -47,7 +68,7 @@ class GoalTypeStep extends ConsumerWidget {
     String subtitle,
     GoalType selected,
   ) {
-    final isSelected = type == selected;
+    final bool isSelected = type == selected;
 
     return GestureDetector(
       onTap: () => ref.read(onboardingProvider.notifier).updateGoalType(type),
@@ -64,34 +85,43 @@ class GoalTypeStep extends ConsumerWidget {
           ),
         ),
         child: Row(
-          children: [
+          children: <Widget>[
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: isSelected ? AppColors.emeraldPrimary : AppColors.surfaceDark,
+                color: isSelected
+                    ? AppColors.emeraldPrimary
+                    : AppColors.surfaceDark,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 _getIcon(type),
-                color: isSelected ? AppColors.onPrimary : AppColors.textSecondary,
+                color: isSelected
+                    ? AppColors.onPrimary
+                    : AppColors.textSecondary,
               ),
             ),
             const SizedBox(width: 20),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   Text(
                     title,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w800,
-                      color: isSelected ? AppColors.emeraldPrimary : AppColors.textPrimary,
+                      color: isSelected
+                          ? AppColors.emeraldPrimary
+                          : AppColors.textPrimary,
                     ),
                   ),
                   Text(
                     subtitle,
-                    style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 13,
+                    ),
                   ),
                 ],
               ),
@@ -104,9 +134,12 @@ class GoalTypeStep extends ConsumerWidget {
 
   IconData _getIcon(GoalType type) {
     switch (type) {
-      case GoalType.verse: return Icons.menu_book_rounded;
-      case GoalType.time: return Icons.timer_rounded;
-      case GoalType.page: return Icons.auto_stories_rounded;
+      case GoalType.verse:
+        return Icons.menu_book_rounded;
+      case GoalType.time:
+        return Icons.timer_rounded;
+      case GoalType.page:
+        return Icons.auto_stories_rounded;
     }
   }
 }

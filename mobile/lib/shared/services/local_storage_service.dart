@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class LocalStorageService {
   static const String settingsBox = 'settings';
   static const String quranCacheBox = 'quran_cache';
+  static const String authBox = 'auth';
 
   Future<void> init() async {
     await Hive.initFlutter();
@@ -11,23 +12,23 @@ class LocalStorageService {
   }
 
   // Generic helpers
-  Future<void> put(String boxName, String key, dynamic value) async {
-    final Box box = Hive.box(boxName);
+  String? get(String boxName, String key) {
+    final Box<dynamic> box = Hive.box<dynamic>(boxName);
+    return box.get(key) as String?;
+  }
+
+  Future<void> put(String boxName, String key, String value) async {
+    final Box<dynamic> box = Hive.box<dynamic>(boxName);
     await box.put(key, value);
   }
 
-  dynamic get(String boxName, String key) {
-    final Box box = Hive.box(boxName);
-    return box.get(key);
-  }
-
   Future<void> delete(String boxName, String key) async {
-    final Box box = Hive.box(boxName);
+    final Box<dynamic> box = Hive.box<dynamic>(boxName);
     await box.delete(key);
   }
 
   Future<void> clear(String boxName) async {
-    final Box box = Hive.box(boxName);
+    final Box<dynamic> box = Hive.box<dynamic>(boxName);
     await box.clear();
   }
 }

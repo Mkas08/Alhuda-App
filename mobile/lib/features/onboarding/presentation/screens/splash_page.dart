@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -16,19 +17,21 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _navigateToNext();
+    unawaited(_navigateToNext());
   }
 
   Future<void> _navigateToNext() async {
     // Simulate initialization delay & splash animation
-    await Future.delayed(const Duration(seconds: 3));
-    
-    if (!mounted) return;
+    await Future<void>.delayed(const Duration(seconds: 3));
 
-    final authStatus = ref.read(authProvider).status;
-    
+    if (!mounted) {
+      return;
+    }
+
+    final AuthStatus authStatus = ref.read(authProvider).status;
+
     if (authStatus == AuthStatus.authenticated) {
-      context.go(RouteConstants.home); 
+      context.go(RouteConstants.home);
     } else {
       context.go(RouteConstants.login);
     }
@@ -41,7 +44,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             // Placeholder logo
             Container(
               width: 120,
@@ -49,7 +52,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               decoration: BoxDecoration(
                 color: AppColors.emeraldPrimary,
                 borderRadius: BorderRadius.circular(24),
-                boxShadow: const [
+                boxShadow: const <BoxShadow>[
                   BoxShadow(
                     color: AppColors.emeraldGlow,
                     blurRadius: 30,
@@ -64,13 +67,15 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               ),
             ),
             const SizedBox(height: 32),
-            Text(
+            const Text(
               'AL-HUDA',
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    color: AppColors.emeraldPrimary,
-                    letterSpacing: 4,
-                    fontWeight: FontWeight.w800,
-                  ),
+              style: TextStyle(
+                fontFamily: 'Lexend',
+                fontSize: 32,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 8,
+                color: AppColors.emeraldPrimary,
+              ),
             ),
           ],
         ),

@@ -10,6 +10,15 @@ from app.database import AsyncSessionLocal
 from app.config import settings
 from app.models.user import User
 from app.schemas.token import TokenPayload
+import redis.asyncio as redis
+
+async def get_redis():
+    """Dependency for getting async redis connection."""
+    client = redis.from_url(settings.REDIS_URL, encoding="utf-8", decode_responses=True)
+    try:
+        yield client
+    finally:
+        await client.close()
 
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl="/api/v1/auth/login"

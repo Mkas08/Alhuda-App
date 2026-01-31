@@ -4,13 +4,13 @@ import 'package:mobile/core/constants/api_constants.dart';
 import 'package:mobile/core/network/auth_interceptor.dart';
 import 'package:mobile/shared/services/secure_storage_service.dart';
 
-final dioProvider = Provider<Dio>((ref) {
+final Provider<Dio> dioProvider = Provider<Dio>((Ref ref) {
   final Dio baseDio = Dio(
     BaseOptions(
       baseUrl: ApiConstants.baseUrl,
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
-      headers: {
+      headers: <String, String>{
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
@@ -18,12 +18,14 @@ final dioProvider = Provider<Dio>((ref) {
   );
 
   final SecureStorageService secureStorage = SecureStorageService();
-  
+
   // Create a separate dio for refresh to avoid cycles
   final Dio refreshDio = Dio(baseDio.options);
-  refreshDio.interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
+  refreshDio.interceptors.add(
+    LogInterceptor(responseBody: true, requestBody: true),
+  );
 
-  baseDio.interceptors.addAll([
+  baseDio.interceptors.addAll(<Interceptor>[
     LogInterceptor(
       requestHeader: true,
       requestBody: true,

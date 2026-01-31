@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -15,11 +16,12 @@ class RegisterScreen extends ConsumerStatefulWidget {
 }
 
 class _RegisterScreenState extends ConsumerState<RegisterScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   bool _obscurePassword = true;
 
   @override
@@ -33,7 +35,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   Future<void> _handleRegister() async {
     if (_formKey.currentState!.validate()) {
-      await ref.read(authProvider.notifier).register(
+      await ref
+          .read(authProvider.notifier)
+          .register(
             email: _emailController.text,
             username: _usernameController.text,
             password: _passwordController.text,
@@ -43,16 +47,28 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authState = ref.watch(authProvider);
+    final AuthState authState = ref.watch(authProvider);
 
-    ref.listen(authProvider, (previous, next) {
+    ref.listen<AuthState>(authProvider, (AuthState? previous, AuthState next) {
       if (next.status == AuthStatus.authenticated) {
         context.go(RouteConstants.onboarding);
-      } else if (next.status == AuthStatus.unauthenticated && 
-                 next.errorMessage != null && 
-                 next.errorMessage!.isNotEmpty) {
+      } else if (next.status == AuthStatus.unauthenticated &&
+          next.errorMessage != null &&
+          next.errorMessage!.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(next.errorMessage!), backgroundColor: AppColors.error),
+          SnackBar(
+            content: Row(
+              children: <Widget>[
+                const Icon(Icons.error_outline, color: Colors.white),
+                const SizedBox(width: 8),
+                Expanded(child: Text(next.errorMessage!)),
+              ],
+            ),
+            backgroundColor: AppColors.error,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.all(16),
+          ),
         );
       }
     });
@@ -63,7 +79,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.textPrimary),
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: AppColors.textPrimary,
+          ),
           onPressed: () => context.pop(),
         ),
       ),
@@ -74,7 +93,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const SizedBox(height: 20),
                 const Text(
                   'JOIN AL-HUDA',
@@ -89,33 +108,42 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 const SizedBox(height: 8),
                 const Text(
                   'Start your path to spiritual excellence',
-                  style: TextStyle(color: AppColors.textSecondary, fontSize: 16),
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 16,
+                  ),
                 ),
                 const SizedBox(height: 40),
                 AuthField(
                   controller: _emailController,
                   label: 'Email',
                   keyboardType: TextInputType.emailAddress,
-                  validator: (v) => !v!.contains('@') ? 'Enter a valid email' : null,
+                  validator: (String? v) =>
+                      !v!.contains('@') ? 'Enter a valid email' : null,
                 ),
                 const SizedBox(height: 24),
                 AuthField(
                   controller: _usernameController,
                   label: 'Username',
-                  validator: (v) => v!.length < 3 ? 'Username too short' : null,
+                  validator: (String? v) =>
+                      v!.length < 3 ? 'Username too short' : null,
                 ),
                 const SizedBox(height: 24),
                 AuthField(
                   controller: _passwordController,
                   label: 'Password',
                   obscureText: _obscurePassword,
-                  validator: (v) => v!.length < 8 ? 'Password must be 8+ chars' : null,
+                  validator: (String? v) =>
+                      v!.length < 8 ? 'Password must be 8+ chars' : null,
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      _obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                       color: AppColors.textSecondary,
                     ),
-                    onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                    onPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -123,13 +151,15 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   controller: _confirmPasswordController,
                   label: 'Confirm Password',
                   obscureText: _obscurePassword,
-                  validator: (v) => v != _passwordController.text ? 'Passwords do not match' : null,
+                  validator: (String? v) => v != _passwordController.text
+                      ? 'Passwords do not match'
+                      : null,
                 ),
                 const SizedBox(height: 48),
                 EmeraldButton(
                   label: 'Create Account',
                   isLoading: authState.status == AuthStatus.loading,
-                  onPressed: _handleRegister,
+                  onPressed: () => unawaited(_handleRegister()),
                 ),
                 const SizedBox(height: 40),
               ],

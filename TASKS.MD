@@ -145,7 +145,7 @@
   - [x] Create authentication dependencies
 - [x] Create auth endpoints
   - [x] POST /api/v1/auth/register
-  - [x] POST /api/v1/auth/login
+  - [x] POST /api/v1/auth/login (Supports email and username)
   - [x] POST /api/v1/auth/refresh
   - [x] POST /api/v1/auth/logout
   - [x] GET /api/v1/auth/me (current user)
@@ -254,10 +254,11 @@
   - [ ] POST /api/v1/auth/resend-verification
   - [ ] Integrate with SendGrid
   - [ ] Create email templates
-- [ ] Add password reset
-  - [ ] POST /api/v1/auth/forgot-password
-  - [ ] POST /api/v1/auth/reset-password
-  - [ ] Create reset token with expiration
+- [x] Add password reset
+  - [x] POST /api/v1/auth/forgot-password
+  - [x] POST /api/v1/auth/reset-password
+  - [x] Create reset token with expiration
+  - [x] Implement 6-digit OTP verification via Redis
 
 #### Mobile: Authentication UI
 - [ ] Create splash screen
@@ -280,10 +281,11 @@
   - [ ] Terms of Service checkbox
   - [ ] Register button with loading state
   - [ ] Navigate to onboarding after success
-- [ ] Implement forgot password flow
-  - [ ] Email input screen
-  - [ ] Success message
-  - [ ] Password reset screen (from email link)
+- [x] Implement forgot password flow
+  - [x] Email input screen
+  - [x] Success message
+  - [x] Password reset screen (from email link/code)
+  - [x] Verify code screen with OTP input
 
 #### Mobile: Onboarding Flow
 - [ ] Welcome screen (Screen 1)

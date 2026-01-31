@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum GoalType { verse, time, page }
+
 enum UserLevel { beginner, intermediate, advanced }
 
 class OnboardingData {
@@ -16,7 +17,7 @@ class OnboardingData {
     this.goalType = GoalType.verse,
     this.goalValue = 10,
     this.level = UserLevel.beginner,
-    this.preferredTimes = const [],
+    this.preferredTimes = const <String>[],
     this.city,
     this.latitude,
     this.longitude,
@@ -49,8 +50,9 @@ class OnboardingNotifier extends StateNotifier<OnboardingData> {
   void updateGoalType(GoalType type) => state = state.copyWith(goalType: type);
   void updateGoalValue(int value) => state = state.copyWith(goalValue: value);
   void updateLevel(UserLevel level) => state = state.copyWith(level: level);
+
   void togglePreferredTime(String time) {
-    final times = List<String>.from(state.preferredTimes);
+    final List<String> times = List<String>.from(state.preferredTimes);
     if (times.contains(time)) {
       times.remove(time);
     } else {
@@ -58,11 +60,15 @@ class OnboardingNotifier extends StateNotifier<OnboardingData> {
     }
     state = state.copyWith(preferredTimes: times);
   }
+
   void updateLocation({String? city, double? lat, double? lon}) {
     state = state.copyWith(city: city, latitude: lat, longitude: lon);
   }
 }
 
-final onboardingProvider = StateNotifierProvider<OnboardingNotifier, OnboardingData>((ref) {
+final StateNotifierProvider<OnboardingNotifier, OnboardingData>
+onboardingProvider = StateNotifierProvider<OnboardingNotifier, OnboardingData>((
+  Ref ref,
+) {
   return OnboardingNotifier();
 });

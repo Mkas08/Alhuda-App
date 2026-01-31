@@ -8,11 +8,11 @@ class GoalValueStep extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(onboardingProvider);
+    final OnboardingData data = ref.watch(onboardingProvider);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         const Text(
           'SET YOUR TARGET',
           style: TextStyle(
@@ -32,23 +32,27 @@ class GoalValueStep extends ConsumerWidget {
         const SizedBox(height: 60),
         Stack(
           alignment: Alignment.center,
-          children: [
+          children: <Widget>[
             Container(
               width: 150,
               height: 150,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColors.emeraldPrimary, width: 4),
-                boxShadow: const [
-                  BoxShadow(color: AppColors.emeraldGlow, blurRadius: 30, spreadRadius: 5),
+                boxShadow: const <BoxShadow>[
+                  BoxShadow(
+                    color: AppColors.emeraldGlow,
+                    blurRadius: 30,
+                    spreadRadius: 5,
+                  ),
                 ],
               ),
               child: Center(
                 child: Text(
                   '${data.goalValue}',
                   style: const TextStyle(
-                    fontSize: 48, 
-                    fontWeight: FontWeight.w900, 
+                    fontSize: 48,
+                    fontWeight: FontWeight.w900,
                     fontFamily: 'Lexend',
                     color: AppColors.textPrimary,
                   ),
@@ -71,13 +75,19 @@ class GoalValueStep extends ConsumerWidget {
             min: 1,
             max: _getMaxValue(data.goalType).toDouble(),
             divisions: _getDivisions(data.goalType),
-            onChanged: (val) => ref.read(onboardingProvider.notifier).updateGoalValue(val.round()),
+            onChanged: (double val) => ref
+                .read(onboardingProvider.notifier)
+                .updateGoalValue(val.round()),
           ),
         ),
         const SizedBox(height: 20),
         Text(
           _getDescription(data.goalType, data.goalValue),
-          style: const TextStyle(color: AppColors.gold, fontWeight: FontWeight.w600, fontSize: 13),
+          style: const TextStyle(
+            color: AppColors.gold,
+            fontWeight: FontWeight.w600,
+            fontSize: 13,
+          ),
         ),
       ],
     );
@@ -85,31 +95,44 @@ class GoalValueStep extends ConsumerWidget {
 
   String _getUnitLabel(GoalType type) {
     switch (type) {
-      case GoalType.verse: return 'verses';
-      case GoalType.time: return 'minutes';
-      case GoalType.page: return 'pages';
+      case GoalType.verse:
+        return 'verses';
+      case GoalType.time:
+        return 'minutes';
+      case GoalType.page:
+        return 'pages';
     }
   }
 
   int _getMaxValue(GoalType type) {
     switch (type) {
-      case GoalType.verse: return 100;
-      case GoalType.time: return 120;
-      case GoalType.page: return 30;
+      case GoalType.verse:
+        return 100;
+      case GoalType.time:
+        return 120;
+      case GoalType.page:
+        return 30;
     }
   }
 
   int _getDivisions(GoalType type) {
     switch (type) {
-      case GoalType.verse: return 99;
-      case GoalType.time: return 119;
-      case GoalType.page: return 29;
+      case GoalType.verse:
+        return 99;
+      case GoalType.time:
+        return 119;
+      case GoalType.page:
+        return 29;
     }
   }
 
   String _getDescription(GoalType type, int value) {
-    if (type == GoalType.time) return 'Approximately ${value ~/ 2} verses at a moderate pace.';
-    if (type == GoalType.page) return 'About ${value * 15} verses depending on the surah.';
+    if (type == GoalType.time) {
+      return 'Approximately ${value ~/ 2} verses at a moderate pace.';
+    }
+    if (type == GoalType.page) {
+      return 'About ${value * 15} verses depending on the surah.';
+    }
     return 'Consistent reading builds a strong spiritual habit.';
   }
 }

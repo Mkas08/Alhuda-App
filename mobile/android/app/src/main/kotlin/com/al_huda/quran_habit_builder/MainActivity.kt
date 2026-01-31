@@ -1,4 +1,4 @@
-package com.al_huda.quran_habit_builder
+package com.quranapp.habitbuilder
 
 import io.flutter.embedding.android.FlutterActivity
 

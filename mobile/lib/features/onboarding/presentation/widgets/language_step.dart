@@ -8,11 +8,11 @@ class LanguageStep extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentLang = ref.watch(languageProvider);
+    final AppLanguage currentLang = ref.watch(languageProvider);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         const Text(
           'CHOOSE LANGUAGE',
           style: TextStyle(
@@ -43,7 +43,7 @@ class LanguageStep extends ConsumerWidget {
     AppLanguage language,
     AppLanguage selected,
   ) {
-    final isSelected = language == selected;
+    final bool isSelected = language == selected;
 
     return GestureDetector(
       onTap: () => ref.read(languageProvider.notifier).setLanguage(language),
@@ -57,23 +57,34 @@ class LanguageStep extends ConsumerWidget {
             color: isSelected ? AppColors.emeraldPrimary : AppColors.borderDark,
             width: 2,
           ),
-          boxShadow: isSelected ? [
-            BoxShadow(color: AppColors.emeraldGlow, blurRadius: 15, spreadRadius: 2)
-          ] : null,
+          boxShadow: isSelected
+              ? <BoxShadow>[
+                  const BoxShadow(
+                    color: AppColors.emeraldGlow,
+                    blurRadius: 15,
+                    spreadRadius: 2,
+                  ),
+                ]
+              : null,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget>[
             Text(
               language.label,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                color: isSelected ? AppColors.emeraldPrimary : AppColors.textPrimary,
+                color: isSelected
+                    ? AppColors.emeraldPrimary
+                    : AppColors.textPrimary,
               ),
             ),
             if (isSelected)
-              const Icon(Icons.check_circle_rounded, color: AppColors.emeraldPrimary),
+              const Icon(
+                Icons.check_circle_rounded,
+                color: AppColors.emeraldPrimary,
+              ),
           ],
         ),
       ),

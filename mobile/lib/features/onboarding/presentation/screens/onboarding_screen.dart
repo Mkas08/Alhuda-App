@@ -22,6 +22,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   int _currentPage = 0;
   static const int _totalSteps = 6;
 
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   void _nextPage() {
     if (_currentPage < _totalSteps - 1) {
       _pageController.nextPage(
@@ -34,7 +40,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   void _completeOnboarding() {
-    // TODO: Save onboarding data to backend
     context.go(RouteConstants.home);
   }
 
@@ -44,43 +49,51 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       backgroundColor: AppColors.deepForest,
       body: SafeArea(
         child: Column(
-          children: [
+          children: <Widget>[
             const SizedBox(height: 20),
             // Progress Header
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
-                children: List.generate(_totalSteps, (index) {
-                  final isActive = index <= _currentPage;
+                children: List<Widget>.generate(_totalSteps, (int index) {
+                  final bool isActive = index <= _currentPage;
                   return Expanded(
                     child: Container(
                       height: 4,
                       margin: const EdgeInsets.symmetric(horizontal: 4),
                       decoration: BoxDecoration(
-                        color: isActive ? AppColors.emeraldPrimary : AppColors.surfaceDark,
+                        color: isActive
+                            ? AppColors.emeraldPrimary
+                            : AppColors.surfaceDark,
                         borderRadius: BorderRadius.circular(2),
-                        boxShadow: isActive ? [
-                          BoxShadow(color: AppColors.emeraldGlow, blurRadius: 10)
-                        ] : null,
+                        boxShadow: isActive
+                            ? const <BoxShadow>[
+                                BoxShadow(
+                                  color: AppColors.emeraldGlow,
+                                  blurRadius: 10,
+                                ),
+                              ]
+                            : null,
                       ),
                     ),
                   );
                 }),
               ),
             ),
-            
+
             Expanded(
               child: PageView(
                 controller: _pageController,
                 physics: const NeverScrollableScrollPhysics(),
-                onPageChanged: (page) => setState(() => _currentPage = page),
-                children: [
-                  const WelcomeStep(),
-                  const LanguageStep(),
-                  const GoalTypeStep(),
-                  const GoalValueStep(),
-                  const PrayerTimesStep(),
-                  _buildBlockingStep(),
+                onPageChanged: (int page) =>
+                    setState(() => _currentPage = page),
+                children: const <Widget>[
+                  WelcomeStep(),
+                  LanguageStep(),
+                  GoalTypeStep(),
+                  GoalValueStep(),
+                  PrayerTimesStep(),
+                  _BlockingStep(),
                 ],
               ),
             ),
@@ -88,7 +101,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             Padding(
               padding: const EdgeInsets.all(24),
               child: EmeraldButton(
-                label: _currentPage == _totalSteps - 1 ? 'GET STARTED' : 'CONTINUE',
+                label: _currentPage == _totalSteps - 1
+                    ? 'GET STARTED'
+                    : 'CONTINUE',
                 onPressed: _nextPage,
               ),
             ),
@@ -97,11 +112,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       ),
     );
   }
+}
 
-  Widget _buildBlockingStep() {
+class _BlockingStep extends StatelessWidget {
+  const _BlockingStep();
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         const Icon(Icons.block_rounded, size: 80, color: AppColors.orange),
         const SizedBox(height: 40),
         const Text(
@@ -133,12 +153,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
           child: const Row(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: <Widget>[
               Icon(Icons.info_outline_rounded, color: AppColors.gold, size: 20),
               SizedBox(width: 12),
               Text(
                 'Available now on Android',
-                style: TextStyle(color: AppColors.gold, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: AppColors.gold,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

@@ -8,7 +8,8 @@ class ServerFailure extends Failure {
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure([String? message]) : super(message ?? 'No Internet Connection');
+  const NetworkFailure([String? message])
+    : super(message ?? 'No Internet Connection');
 }
 
 class CacheFailure extends Failure {

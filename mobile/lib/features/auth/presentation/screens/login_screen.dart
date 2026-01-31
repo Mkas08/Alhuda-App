@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -15,9 +16,9 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
 
   @override
@@ -29,26 +30,37 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   Future<void> _handleLogin() async {
     if (_formKey.currentState!.validate()) {
-      await ref.read(authProvider.notifier).login(
-            _usernameController.text,
-            _passwordController.text,
-          );
+      await ref
+          .read(authProvider.notifier)
+          .login(_usernameController.text, _passwordController.text);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final authState = ref.watch(authProvider);
+    final AuthState authState = ref.watch(authProvider);
 
     // Listen for auth success to navigate
-    ref.listen(authProvider, (previous, next) {
+    ref.listen<AuthState>(authProvider, (AuthState? previous, AuthState next) {
       if (next.status == AuthStatus.authenticated) {
         context.go(RouteConstants.onboarding);
-      } else if (next.status == AuthStatus.unauthenticated && 
-                 next.errorMessage != null && 
-                 next.errorMessage!.isNotEmpty) {
+      } else if (next.status == AuthStatus.unauthenticated &&
+          next.errorMessage != null &&
+          next.errorMessage!.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(next.errorMessage!), backgroundColor: AppColors.error),
+          SnackBar(
+            content: Row(
+              children: <Widget>[
+                const Icon(Icons.error_outline, color: Colors.white),
+                const SizedBox(width: 8),
+                Expanded(child: Text(next.errorMessage!)),
+              ],
+            ),
+            backgroundColor: AppColors.error,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.all(16),
+          ),
         );
       }
     });
@@ -62,7 +74,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: <Widget>[
                 const SizedBox(height: 60),
                 // Logo placeholder
                 Container(
@@ -71,11 +83,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   decoration: BoxDecoration(
                     color: AppColors.emeraldPrimary,
                     borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(color: AppColors.emeraldGlow, blurRadius: 20, spreadRadius: 5),
+                    boxShadow: const <BoxShadow>[
+                      BoxShadow(
+                        color: AppColors.emeraldGlow,
+                        blurRadius: 20,
+                        spreadRadius: 5,
+                      ),
                     ],
                   ),
-                  child: const Icon(Icons.shield_rounded, size: 40, color: AppColors.onPrimary),
+                  child: const Icon(
+                    Icons.shield_rounded,
+                    size: 40,
+                    color: AppColors.onPrimary,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 const Text(
@@ -90,36 +110,49 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 const Text(
                   'Login to continue your spiritual journey',
-                  style: TextStyle(color: AppColors.textSecondary, fontSize: 14),
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 14,
+                  ),
                 ),
                 const SizedBox(height: 48),
                 AuthField(
                   controller: _usernameController,
                   label: 'Username',
-                  validator: (v) => v!.isEmpty ? 'Please enter your username' : null,
+                  validator: (String? v) =>
+                      v!.isEmpty ? 'Please enter your username' : null,
                 ),
                 const SizedBox(height: 24),
                 AuthField(
                   controller: _passwordController,
                   label: 'Password',
                   obscureText: _obscurePassword,
-                  validator: (v) => v!.isEmpty ? 'Please enter your password' : null,
+                  validator: (String? v) =>
+                      v!.isEmpty ? 'Please enter your password' : null,
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      _obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                       color: AppColors.textSecondary,
                     ),
-                    onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                    onPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
                   ),
                 ),
                 const SizedBox(height: 12),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () => context.push(RouteConstants.login), // TODO: forgot password screen
+                    onPressed: () => context.push(
+                      RouteConstants.forgotPassword,
+                    ),
                     child: const Text(
                       'Forgot Password?',
-                      style: TextStyle(color: AppColors.emeraldLight, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        color: AppColors.emeraldLight,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -127,18 +160,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 EmeraldButton(
                   label: 'Sign In',
                   isLoading: authState.status == AuthStatus.loading,
-                  onPressed: _handleLogin,
+                  onPressed: () => unawaited(_handleLogin()),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: <Widget>[
                     const Text(
                       "Don't have an account? ",
                       style: TextStyle(color: AppColors.textSecondary),
                     ),
                     GestureDetector(
-                      onTap: () => context.push(RouteConstants.register),
+                      onTap: () =>
+                          unawaited(context.push(RouteConstants.register)),
                       child: const Text(
                         'Create Now',
                         style: TextStyle(

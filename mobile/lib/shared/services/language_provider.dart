@@ -20,10 +20,13 @@ class LanguageNotifier extends StateNotifier<AppLanguage> {
   }
 
   void _loadInitial() {
-    final code = _storage.get(LocalStorageService.settingsBox, 'language_code');
+    final String? code = _storage.get(
+      LocalStorageService.settingsBox,
+      'language_code',
+    );
     if (code != null) {
       state = AppLanguage.values.firstWhere(
-        (l) => l.locale.languageCode == code,
+        (AppLanguage l) => l.locale.languageCode == code,
         orElse: () => AppLanguage.english,
       );
     }
@@ -39,6 +42,7 @@ class LanguageNotifier extends StateNotifier<AppLanguage> {
   }
 }
 
-final languageProvider = StateNotifierProvider<LanguageNotifier, AppLanguage>((ref) {
-  return LanguageNotifier(ref.watch(localStorageProvider));
-});
+final StateNotifierProvider<LanguageNotifier, AppLanguage> languageProvider =
+    StateNotifierProvider<LanguageNotifier, AppLanguage>((Ref ref) {
+      return LanguageNotifier(ref.watch(localStorageProvider));
+    });

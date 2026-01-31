@@ -2,41 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/config/routes/route_constants.dart';
 import 'package:mobile/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:mobile/features/auth/presentation/screens/verify_code_screen.dart';
+import 'package:mobile/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:mobile/features/auth/presentation/screens/login_screen.dart';
 import 'package:mobile/features/auth/presentation/screens/register_screen.dart';
 import 'package:mobile/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:mobile/features/onboarding/presentation/screens/splash_page.dart';
 
-final appRouter = GoRouter(
+final GoRouter appRouter = GoRouter(
   initialLocation: RouteConstants.splash,
-  routes: [
+  routes: <RouteBase>[
     GoRoute(
       path: RouteConstants.splash,
-      builder: (context, state) => const SplashPage(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const SplashPage(),
     ),
     GoRoute(
       path: RouteConstants.login,
-      builder: (context, state) => const LoginScreen(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const LoginScreen(),
     ),
     GoRoute(
       path: RouteConstants.register,
-      builder: (context, state) => const RegisterScreen(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const RegisterScreen(),
     ),
     GoRoute(
       path: RouteConstants.forgotPassword,
-      builder: (context, state) => const ForgotPasswordScreen(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const ForgotPasswordScreen(),
+    ),
+    GoRoute(
+      path: RouteConstants.verifyCode,
+      builder: (BuildContext context, GoRouterState state) =>
+          const VerifyCodeScreen(),
     ),
     GoRoute(
       path: RouteConstants.resetPassword,
-      builder: (context, state) => const _PlaceholderScreen(title: 'Reset Password'),
+      builder: (BuildContext context, GoRouterState state) =>
+          const ResetPasswordScreen(),
     ),
     GoRoute(
       path: RouteConstants.home,
-      builder: (context, state) => const _PlaceholderScreen(title: 'Home'),
+      builder: (BuildContext context, GoRouterState state) =>
+          const _PlaceholderScreen(title: 'Home'),
     ),
     GoRoute(
       path: RouteConstants.onboarding,
-      builder: (context, state) => const OnboardingScreen(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const OnboardingScreen(),
     ),
   ],
 );
@@ -47,8 +61,6 @@ class _PlaceholderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text(title)),
-    );
+    return Scaffold(body: Center(child: Text(title)));
   }
 }

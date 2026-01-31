@@ -18,7 +18,7 @@ class EmeraldButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ds = context.designSystem;
+    final DesignSystemExtension ds = context.designSystem;
 
     return Container(
       width: double.infinity,
@@ -26,16 +26,22 @@ class EmeraldButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         boxShadow: !isSecondary && onPressed != null
-            ? [ds.primaryGlow]
+            ? <BoxShadow>[ds.primaryGlow]
             : null,
       ),
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: isSecondary ? Colors.transparent : AppColors.emeraldPrimary,
-          foregroundColor: isSecondary ? AppColors.emeraldPrimary : AppColors.onPrimary,
+          backgroundColor: isSecondary
+              ? Colors.transparent
+              : AppColors.emeraldPrimary,
+          foregroundColor: isSecondary
+              ? AppColors.emeraldPrimary
+              : AppColors.onPrimary,
           elevation: 0,
-          side: isSecondary ? const BorderSide(color: AppColors.emeraldPrimary, width: 2) : null,
+          side: isSecondary
+              ? const BorderSide(color: AppColors.emeraldPrimary, width: 2)
+              : null,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -46,7 +52,9 @@ class EmeraldButton extends StatelessWidget {
                 width: 20,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: isSecondary ? AppColors.emeraldPrimary : AppColors.onPrimary,
+                  color: isSecondary
+                      ? AppColors.emeraldPrimary
+                      : AppColors.onPrimary,
                 ),
               )
             : Text(

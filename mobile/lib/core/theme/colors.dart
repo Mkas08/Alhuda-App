@@ -19,7 +19,7 @@ class AppColors {
   static const Color deepForest = Color(0xFF102216);
   static const Color surfaceDark = Color(0xFF1c271f);
   static const Color surfaceElevated = Color(0xFF23482f);
-  
+
   // Light Backgrounds (for future use or light mode)
   static const Color backgroundLight = Color(0xFFf6f8f6);
   static const Color surfaceLight = Color(0xFFffffff);
@@ -36,7 +36,7 @@ class AppColors {
   static const Color warning = Color(0xFFf59e0b);
   static const Color error = Color(0xFFef4444);
   static const Color info = Color(0xFF3b82f6);
-  
+
   // Borders
   static const Color borderDark = Color(0x0DFFFFFF); // 5% opacity
   static const Color borderAccent = Color(0xFF326744);
