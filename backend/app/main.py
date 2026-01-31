@@ -19,6 +19,21 @@ def create_app() -> FastAPI:
         description="Quran Habit Builder API",
     )
 
+    import time
+    from fastapi import Request
+    import logging
+
+    logger = logging.getLogger(__name__)
+
+    @app.middleware("http")
+    async def log_response_time(request: Request, call_next):
+        start_time = time.time()
+        response = await call_next(request)
+        process_time = time.time() - start_time
+        response.headers["X-Process-Time"] = str(process_time)
+        logger.info(f"Path: {request.url.path} Method: {request.method} Time: {process_time:.4f}s")
+        return response
+
     # Set up CORS
     app.add_middleware(
         CORSMiddleware,

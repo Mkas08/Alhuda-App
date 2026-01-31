@@ -1,0 +1,79 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\muham\AppData\Local\Programs\Python\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: D:\Habit\backend
+plugins: anyio-4.12.1, Faker-40.1.2, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/api/test_quran.py::test_list_surahs PASSED                         [ 25%]
+tests/api/test_quran.py::test_get_verse PASSED                           [ 50%]
+tests/api/test_quran.py::test_search_quran PASSED                        [ 75%]
+tests/api/test_quran.py::test_navigation PASSED                          [100%]2026-01-31 22:23:19,193 [DEBUG] aiosqlite: executing <function Connection.stop.<locals>.close_and_stop at 0x000001E215755FE0>
+--- Logging error ---
+
+
+============================== warnings summary ===============================
+app\schemas\quran.py:4
+  D:\Habit\backend\app\schemas\quran.py:4: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class QuranTranslationSchema(BaseModel):
+
+app\schemas\quran.py:13
+  D:\Habit\backend\app\schemas\quran.py:13: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class QuranVerseSchema(BaseModel):
+
+app\schemas\quran.py:30
+  D:\Habit\backend\app\schemas\quran.py:30: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class QuranSurahSchema(BaseModel):
+
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\types.py:43
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\types.py:43: DeprecationWarning: '_UnionGenericAlias' is deprecated and slated for removal in Python 3.17
+    VersionedUnionType = Union[builtin_types.UnionType, _UnionGenericAlias]
+
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    return asyncio.iscoroutinefunction(obj) or (
+
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: 15 warnings
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    and not asyncio.iscoroutinefunction(dependant.call)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 4 passed, 23 warnings in 1.10s ========================
+Traceback (most recent call last):
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1155, in emit
+    self.flush()
+    ~~~~~~~~~~^^
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1137, in flush
+    self.stream.flush()
+    ~~~~~~~~~~~~~~~~~^^
+ValueError: I/O operation on closed file.
+Call stack:
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\threading.py", line 140, in run
+    return _run_old_run_func()
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\threading.py", line 133, in _run_old_run_func
+    return old_run_func(self, *a[1:], **kw)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\aiosqlite\core.py", line 67, in _connection_worker_thread
+    LOG.debug("operation %s completed", function)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1508, in debug
+    self._log(DEBUG, msg, args, **kwargs)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\logging.py", line 123, in sentry_patched_callhandlers
+    return old_callhandlers(self, record)
+Message: 'operation %s completed'
+Arguments: (<function Connection.stop.<locals>.close_and_stop at 0x000001E215755FE0>,)
+Sentry is attempting to send 7 pending events
+Waiting up to 2 seconds
+Press Ctrl-Break to quit
