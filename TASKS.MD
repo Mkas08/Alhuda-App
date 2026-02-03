@@ -393,53 +393,52 @@
 ### 2.3 Goal Setting & User Progress
 
 #### Backend: Goals API
-- [ ] Implement goal creation
-  - [ ] POST /api/v1/goals
-  - [ ] Validate goal type and value
-  - [ ] Store preferred reading times (JSONB)
-  - [ ] Create initial user_stats entry
-  - [ ] Return goal_id
-- [ ] Implement goal retrieval
-  - [ ] GET /api/v1/goals (user's active goal)
-  - [ ] GET /api/v1/goals/{goal_id}
-  - [ ] GET /api/v1/goals/history (past goals)
-- [ ] Implement goal updates
-  - [ ] PATCH /api/v1/goals/{goal_id}
-  - [ ] Store modification history
-  - [ ] Effective date for changes (next day)
-- [ ] Create user stats service
-  - [ ] Calculate current streak
-  - [ ] Calculate longest streak
-  - [ ] Update total verses read
-  - [ ] Update total hasanat
-  - [ ] Track completed surahs and juz
+- [x] Implement goal creation
+  - [x] POST /api/v1/goals
+  - [x] Validate goal type and value
+  - [x] Store preferred reading times (JSONB)
+  - [x] Create initial user_stats entry
+  - [x] Return goal_id
+- [x] Implement goal retrieval
+  - [x] GET /api/v1/goals (user's active goal)
+  - [x] GET /api/v1/goals/{goal_id}
+  - [x] GET /api/v1/goals/history
+- [x] Implement goal updates
+  - [x] PATCH /api/v1/goals/{goal_id}
+  - [x] Store modification history
+  - [x] Effective date for changes
+- [x] Create user stats service
+  - [x] Calculate current streak
+  - [x] Calculate longest streak
+  - [x] Update total verses read
+  - [x] Update total hasanat
+  - [x] Track completed surahs and juz
 
 #### Backend: Reading Progress Tracking
-- [ ] Implement progress endpoints
-  - [ ] GET /api/v1/progress (user's reading progress)
-  - [ ] POST /api/v1/progress/update (update current position)
-  - [ ] Calculate percentage of Quran completed
-- [ ] Create bookmark functionality
-  - [ ] POST /api/v1/bookmarks
-  - [ ] GET /api/v1/bookmarks
-  - [ ] DELETE /api/v1/bookmarks/{bookmark_id}
+- [x] Implement progress endpoints
+  - [x] GET /api/v1/progress (user's reading progress)
+  - [x] POST /api/v1/progress/update (update current position)
+  - [x] Calculate percentage of Quran completed
+- [x] Create bookmark functionality
+  - [x] POST /api/v1/bookmarks
+  - [x] GET /api/v1/bookmarks
+  - [x] DELETE /api/v1/bookmarks/{bookmark_id}
 
 #### Mobile: Goal Setting UI
-- [ ] Create goal setup screen
-  - [ ] Display goal type options (verse/time/page)
-  - [ ] Input field for goal value
-  - [ ] Smart suggestions based on user level
-  - [ ] Preview of what goal means (e.g., "~5 minutes/day")
-  - [ ] Save button
-- [ ] Create goal editing screen
-  - [ ] Show current goal
-  - [ ] Allow modification
-  - [ ] Show history of changes
-  - [ ] Confirmation dialog for changes
-- [ ] Implement goal service
-  - [ ] Create goal provider (Riverpod)
-  - [ ] API integration for CRUD operations
-  - [ ] Local caching of current goal
+- [x] Create goal setup screen
+  - [x] Display goal type options (verse/time/page)
+  - [x] Input field for goal value
+  - [x] Smart suggestions based on user level
+  - [x] Preview of what goal means (e.g., "~5 minutes/day")
+  - [x] Save button
+- [x] Create goal editing screen
+  - [x] Show current goal
+  - [x] Allow modification
+  - [x] Show history of changes
+- [x] Implement goal service
+  - [x] Create goal provider (Riverpod)
+  - [x] API integration for CRUD operations
+  - [x] Local caching of current goal
 
 ---
 

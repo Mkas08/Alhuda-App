@@ -1,0 +1,106 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: D:\Habit\backend
+plugins: anyio-4.12.1, Faker-40.1.2, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 4 items
+
+tests\api\test_progress.py ....                                          [100%]2026-01-31 23:24:19,587 [DEBUG] aiosqlite: operation functools.partial(<built-in method rollback of sqlite3.Connection object at 0x0000020E0BE297B0>) completed
+2026-01-31 23:24:19,786 [DEBUG] urllib3.connectionpool: https://o4510681530630144.ingest.de.sentry.io:443 "POST /api/4510681564381264/envelope/ HTTP/1.1" 200 0
+2026-01-31 23:24:20,384 [DEBUG] urllib3.connectionpool: https://o4510681530630144.ingest.de.sentry.io:443 "POST /api/4510681564381264/envelope/ HTTP/1.1" 200 0
+2026-01-31 23:24:20,981 [DEBUG] urllib3.connectionpool: https://o4510681530630144.ingest.de.sentry.io:443 "POST /api/4510681564381264/envelope/ HTTP/1.1" 200 0
+2026-01-31 23:24:20,981 [DEBUG] aiosqlite: executing <function Connection.stop.<locals>.close_and_stop at 0x0000020E0AAFEE50>
+2026-01-31 23:24:20,983 [DEBUG] aiosqlite: operation <function Connection.stop.<locals>.close_and_stop at 0x0000020E0AAFEE50> completed
+
+
+============================== warnings summary ===============================
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\types.py:43
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\google\genai\types.py:43: DeprecationWarning: '_UnionGenericAlias' is deprecated and slated for removal in Python 3.17
+    VersionedUnionType = Union[builtin_types.UnionType, _UnionGenericAlias]
+
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427
+tests/api/test_progress.py::test_get_progress_summary
+tests/api/test_progress.py::test_update_progress
+tests/api/test_progress.py::test_bookmarks_crud
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\starlette.py:427: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    return asyncio.iscoroutinefunction(obj) or (
+
+C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: 23 warnings
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\fastapi.py:76: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    and not asyncio.iscoroutinefunction(dependant.call)
+
+tests/api/test_progress.py::test_create_goal
+tests/api/test_progress.py::test_get_progress_summary
+tests/api/test_progress.py::test_update_progress
+tests/api/test_progress.py::test_bookmarks_crud
+  D:\Habit\backend\app\core\security.py:15: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expire = datetime.utcnow() + expires_delta
+
+tests/api/test_progress.py::test_create_goal
+tests/api/test_progress.py::test_get_progress_summary
+tests/api/test_progress.py::test_update_progress
+tests/api/test_progress.py::test_bookmarks_crud
+  D:\Habit\backend\app\core\security.py:25: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expire = datetime.utcnow() + expires_delta
+
+tests/api/test_progress.py::test_update_progress
+  C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 4 passed, 40 warnings in 15.85s =======================
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+Call stack:
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\threading.py", line 140, in run
+    return _run_old_run_func()
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\threading.py", line 133, in _run_old_run_func
+    return old_run_func(self, *a[1:], **kw)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\worker.py", line 125, in _target
+    callback()
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\transport.py", line 527, in send_envelope_wrapper
+    self._send_envelope(envelope)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\transport.py", line 463, in _send_envelope
+    self._send_request(
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\transport.py", line 329, in _send_request
+    response = self._request(
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\transport.py", line 669, in _request
+    return self._pool.request(
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\_request_methods.py", line 143, in request
+    return self.request_encode_body(
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\poolmanager.py", line 457, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 766, in urlopen
+    conn = self._get_conn(timeout=pool_timeout)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 292, in _get_conn
+    return conn or self._new_conn()
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\urllib3\connectionpool.py", line 1049, in _new_conn
+    log.debug(
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1508, in debug
+    self._log(DEBUG, msg, args, **kwargs)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+  File "C:\Users\muham\AppData\Local\Programs\Python\Python314\Lib\site-packages\sentry_sdk\integrations\logging.py", line 123, in sentry_patched_callhandlers
+    return old_callhandlers(self, record)
+Message: 'Starting new HTTPS connection (%d): %s:%s'
+Arguments: (2, 'o4510681530630144.ingest.de.sentry.io', 443)
+Sentry is attempting to send 11 pending events
+Waiting up to 2 seconds
+Press Ctrl-Break to quit

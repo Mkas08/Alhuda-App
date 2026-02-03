@@ -1,3 +1,4 @@
+from uuid import UUID
 from typing import Generator, Optional
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -45,7 +46,7 @@ async def get_current_user(
             detail="Could not validate credentials",
         )
     
-    result = await db.execute(select(User).where(User.user_id == token_data.sub))
+    result = await db.execute(select(User).where(User.user_id == UUID(token_data.sub)))
     user = result.scalar_one_or_none()
     
     if not user:

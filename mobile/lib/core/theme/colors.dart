@@ -9,6 +9,7 @@ class AppColors {
   static const Color emeraldDark = Color(0xFF0bc948);
   static const Color emeraldGlow = Color(0x4D13EC5B); // 30% opacity
   static const Color emeraldGlowStrong = Color(0x8013EC5B); // 50% opacity
+  static const Color emeraldSecondary = Color(0xFF326744);
 
   // Accents
   static const Color gold = Color(0xFFd4af37);

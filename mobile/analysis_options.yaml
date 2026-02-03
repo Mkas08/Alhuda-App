@@ -16,6 +16,5 @@ linter:
     avoid_print: true
     require_trailing_commas: true
     prefer_final_locals: true
-    always_specify_types: true
     unnecessary_await_in_return: true
     unawaited_futures: true

@@ -10,6 +10,17 @@ class AppTextStyles {
   static String? get bodyFont => GoogleFonts.manrope().fontFamily;
   static String? get arabicFont => GoogleFonts.notoSansArabic().fontFamily;
 
+  // Light/Dark Theme specific adjustments can be made here
+  static TextStyle get h1 => textTheme.displayLarge!;
+  static TextStyle get h2 => textTheme.displayMedium!;
+  static TextStyle get h3 => textTheme.displaySmall!;
+  static TextStyle get bodyLarge => textTheme.bodyLarge!;
+  static TextStyle get bodyMedium => textTheme.bodyMedium!;
+  static TextStyle get bodySmall => textTheme.bodySmall!;
+  static TextStyle get labelLarge => textTheme.labelLarge!;
+  static TextStyle get labelMedium => textTheme.labelMedium!;
+  static TextStyle get labelSmall => textTheme.labelSmall!;
+
   // Arabic Ayah Style
   static TextStyle get arabicAyah => GoogleFonts.notoSansArabic(
     fontSize: 36,
@@ -18,7 +29,6 @@ class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  // Light/Dark Theme specific adjustments can be made here
   static TextTheme get textTheme => TextTheme(
     displayLarge: GoogleFonts.lexend(fontSize: 48, fontWeight: FontWeight.w800),
     displayMedium: GoogleFonts.lexend(

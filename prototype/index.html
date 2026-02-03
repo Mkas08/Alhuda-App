@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Al-Huda | Quran Habit Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="screen">
+        <div class="splash-content">
+            <div class="splash-logo-box">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h1 class="splash-title">AL-HUDA</h1>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen hidden">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <h1 class="auth-title">WELCOME BACK</h1>
+            <p class="auth-subtitle">Login to continue your spiritual journey</p>
+
+            <form id="login-form" class="auth-form">
+                <div class="auth-field">
+                    <label>USERNAME</label>
+                    <input type="text" id="login-username" placeholder="Enter your username" required>
+                </div>
+                <div class="auth-field">
+                    <label>PASSWORD</label>
+                    <div class="password-input">
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <button type="button" class="toggle-password"><i class="fas fa-eye-slash"></i></button>
+                    </div>
+                </div>
+                <div class="forgot-link">
+                    <a href="#" id="forgot-password-link">Forgot Password?</a>
+                </div>
+                <button type="submit" class="emerald-btn">SIGN IN</button>
+            </form>
+
+            <div class="auth-footer">
+                <span>Don't have an account? </span>
+                <a href="#" id="go-to-register">Create Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Screen -->
+    <div id="register-screen" class="screen hidden">
+        <div class="auth-container">
+            <button class="back-btn" id="register-back"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="auth-title left">JOIN AL-HUDA</h1>
+            <p class="auth-subtitle left">Start your path to spiritual excellence</p>
+
+            <form id="register-form" class="auth-form">
+                <div class="auth-field">
+                    <label>EMAIL</label>
+                    <input type="email" id="register-email" placeholder="Enter your email" required>
+                </div>
+                <div class="auth-field">
+                    <label>USERNAME</label>
+                    <input type="text" id="register-username" placeholder="Choose a username" required minlength="3">
+                </div>
+                <div class="auth-field">
+                    <label>PASSWORD</label>
+                    <div class="password-input">
+                        <input type="password" id="register-password" placeholder="Create password (8+ chars)" required
+                            minlength="8">
+                        <button type="button" class="toggle-password"><i class="fas fa-eye-slash"></i></button>
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label>CONFIRM PASSWORD</label>
+                    <div class="password-input">
+                        <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                        <button type="button" class="toggle-password"><i class="fas fa-eye-slash"></i></button>
+                    </div>
+                </div>
+                <button type="submit" class="emerald-btn">CREATE ACCOUNT</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Forgot Password Screen -->
+    <div id="forgot-screen" class="screen hidden">
+        <div class="auth-container">
+            <button class="back-btn" id="forgot-back"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="auth-title left">FORGOT PASSWORD?</h1>
+            <p class="auth-subtitle left">Enter your email address and we'll send you a verification code to reset your
+                password.</p>
+
+            <form id="forgot-form" class="auth-form">
+                <div class="auth-field">
+                    <label>EMAIL</label>
+                    <input type="email" id="forgot-email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="emerald-btn">SEND CODE</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Onboarding Screen (6 Steps) -->
+    <div id="onboarding-screen" class="screen hidden">
+        <div class="onboarding-container">
+            <!-- Progress Bar -->
+            <div class="onboarding-progress">
+                <div class="progress-segment active" data-step="1"></div>
+                <div class="progress-segment" data-step="2"></div>
+                <div class="progress-segment" data-step="3"></div>
+                <div class="progress-segment" data-step="4"></div>
+                <div class="progress-segment" data-step="5"></div>
+                <div class="progress-segment" data-step="6"></div>
+            </div>
+
+            <div class="onboarding-pages">
+                <!-- Step 1: Welcome/MARHABAN -->
+                <div class="onboarding-page active" data-step="1">
+                    <div class="step-icon-box large">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="onboarding-title">MARHABAN</h2>
+                    <p class="onboarding-text primary">Your consistent journey with the<br>Noble Quran begins now.</p>
+                    <p class="onboarding-text secondary">Experience a focused, personalized, and rewarding way to read.
+                    </p>
+                </div>
+
+                <!-- Step 2: Language -->
+                <div class="onboarding-page" data-step="2">
+                    <h2 class="onboarding-title">CHOOSE LANGUAGE</h2>
+                    <p class="onboarding-text secondary">Select your preferred language for the app interface and
+                        translations.</p>
+                    <div class="language-options">
+                        <button class="language-option active" data-lang="en">
+                            <span>English</span>
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                        <button class="language-option" data-lang="ar">
+                            <span>العربية</span>
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Goal Type -->
+                <div class="onboarding-page" data-step="3">
+                    <h2 class="onboarding-title">WHAT IS YOUR GOAL?</h2>
+                    <p class="onboarding-text secondary">Choose how you want to measure your daily spiritual progress.
+                    </p>
+                    <div class="goal-type-options">
+                        <button class="goal-type-option active" data-type="verse">
+                            <div class="goal-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="goal-info">
+                                <span class="goal-name">Verse-based</span>
+                                <span class="goal-desc">Read a specific number of ayahs</span>
+                            </div>
+                        </button>
+                        <button class="goal-type-option" data-type="time">
+                            <div class="goal-icon"><i class="fas fa-clock"></i></div>
+                            <div class="goal-info">
+                                <span class="goal-name">Time-based</span>
+                                <span class="goal-desc">Dedicate focused reading time</span>
+                            </div>
+                        </button>
+                        <button class="goal-type-option" data-type="page">
+                            <div class="goal-icon"><i class="fas fa-file-lines"></i></div>
+                            <div class="goal-info">
+                                <span class="goal-name">Page-based</span>
+                                <span class="goal-desc">Read a fixed number of pages</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Goal Value -->
+                <div class="onboarding-page" data-step="4">
+                    <h2 class="onboarding-title">SET YOUR TARGET</h2>
+                    <p class="onboarding-text secondary">How many <span id="goal-unit-label">verses</span> per day?</p>
+                    <div class="goal-value-display">
+                        <span id="goal-value-num">10</span>
+                    </div>
+                    <input type="range" id="goal-slider" class="goal-slider" min="1" max="100" value="10">
+                    <p class="goal-hint" id="goal-hint">Consistent reading builds a strong spiritual habit.</p>
+                </div>
+
+                <!-- Step 5: Prayer Times -->
+                <div class="onboarding-page" data-step="5">
+                    <h2 class="onboarding-title">BEST TIMES TO READ</h2>
+                    <p class="onboarding-text secondary">Select your preferred reading slots. We'll remind you at these
+                        times.</p>
+                    <div class="prayer-time-chips">
+                        <button class="prayer-chip active" data-time="fajr">After Fajr</button>
+                        <button class="prayer-chip" data-time="dhuhr">After Dhuhr</button>
+                        <button class="prayer-chip" data-time="asr">After Asr</button>
+                        <button class="prayer-chip" data-time="maghrib">After Maghrib</button>
+                        <button class="prayer-chip" data-time="isha">After Isha</button>
+                    </div>
+                    <p class="onboarding-text muted">We will use your location for accurate prayer times.</p>
+                </div>
+
+                <!-- Step 6: App Blocking -->
+                <div class="onboarding-page" data-step="6">
+                    <div class="step-icon-box orange">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h2 class="onboarding-title">STAY FOCUSED</h2>
+                    <p class="onboarding-text secondary">Al-Huda can block distracting apps while you read to ensure
+                        your spiritual focus remains unbroken.</p>
+                    <div class="info-badge">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Available now on Android</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="emerald-btn onboarding-continue" id="onboarding-next">CONTINUE</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="main-app" class="hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <button class="header-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+            <div class="header-title"><span id="current-screen-title">Home</span></div>
+            <div class="header-actions">
+                <button class="header-btn" id="notifications-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="header-btn" id="profile-btn"><i class="fas fa-user-circle"></i></button>
+            </div>
+        </header>
+
+        <!-- Screen Container -->
+        <main class="screen-container">
+            <!-- Home Screen -->
+            <div id="home-screen" class="app-screen active">
+                <div class="greeting-section">
+                    <h1>Assalamu Alaikum, <span id="user-name">Ahmad</span>! 👋</h1>
+                    <p class="date-hijri" id="hijri-date">2 Sha'ban 1447</p>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Today's Goal</h3>
+                        <span class="goal-status" id="goal-status">In Progress</span>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="progress-main">
+                            <span class="progress-current" id="verses-read">6</span>
+                            <span class="progress-divider">/</span>
+                            <span class="progress-target" id="verses-target">10</span>
+                            <span class="progress-unit">verses</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="daily-progress" style="width: 60%"></div>
+                        </div>
+                        <span class="progress-percent" id="progress-percent">60%</span>
+                    </div>
+                    <button class="emerald-btn continue-btn" id="continue-reading-btn">
+                        <i class="fas fa-book-open"></i> Continue Reading
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card streak">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="current-streak">8</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-card hasanat">
+                        <div class="stat-icon">📿</div>
+                        <div class="stat-value" id="total-hasanat">45,230</div>
+                        <div class="stat-label">Total Hasanat</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" data-nav="read"><i
+                                class="fas fa-book-quran"></i><span>Read</span></button>
+                        <button class="action-btn" data-nav="chat"><i
+                                class="fas fa-comments"></i><span>Chat</span></button>
+                        <button class="action-btn" data-nav="challenges"><i
+                                class="fas fa-trophy"></i><span>Challenges</span></button>
+                        <button class="action-btn" data-nav="leaderboard"><i
+                                class="fas fa-ranking-star"></i><span>Ranks</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading Screen - Surah List -->
+            <div id="read-screen" class="app-screen">
+                <div class="reading-mode-toggle">
+                    <button class="mode-btn active" data-mode="ayah">Ayah by Ayah</button>
+                    <button class="mode-btn" data-mode="mushaf">Mushaf</button>
+                </div>
+
+                <div class="surah-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="surah-search" placeholder="Search surah...">
+                </div>
+
+                <div class="surah-list" id="surah-list">
+                    <!-- Surahs will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Ayah by Ayah Reading Screen -->
+            <div id="ayah-screen" class="app-screen">
+                <div class="reading-header">
+                    <button class="back-btn" id="ayah-back"><i class="fas fa-arrow-left"></i></button>
+                    <div class="surah-info">
+                        <h2 id="ayah-surah-name">Al-Baqarah</h2>
+                        <span id="ayah-location">2:255</span>
+                    </div>
+                    <div class="reading-controls">
+                        <button class="control-btn" id="bookmark-btn"><i class="far fa-bookmark"></i></button>
+                        <button class="control-btn" id="settings-btn"><i class="fas fa-text-height"></i></button>
+                    </div>
+                </div>
+
+                <div class="verse-container">
+                    <div class="arabic-text" id="arabic-verse">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ
+                        لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ</div>
+                    <div class="translation-text" id="translation-verse">Allah - there is no deity except Him, the
+                        Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep...
+                    </div>
+                </div>
+
+                <div class="hasanat-display">
+                    <span class="hasanat-icon">📿</span>
+                    <span>Hasanat: </span>
+                    <span class="hasanat-value" id="session-hasanat">9,850</span>
+                    <span class="hasanat-change" id="hasanat-change">(+35)</span>
+                </div>
+
+                <div class="reading-navigation">
+                    <button class="nav-btn" id="prev-verse-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="nav-btn" id="done-btn"><i class="fas fa-check"></i> Done</button>
+                    <button class="nav-btn primary" id="next-verse-btn">Next <i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Mushaf Reading Screen -->
+            <div id="mushaf-screen" class="app-screen">
+                <div class="reading-header">
+                    <button class="back-btn" id="mushaf-back"><i class="fas fa-arrow-left"></i></button>
+                    <div class="surah-info">
+                        <h2 id="mushaf-surah-name">Al-Baqarah</h2>
+                        <span id="mushaf-page">Page 42</span>
+                    </div>
+                    <div class="reading-controls">
+                        <button class="control-btn"><i class="far fa-bookmark"></i></button>
+                        <button class="control-btn"><i class="fas fa-cog"></i></button>
+                    </div>
+                </div>
+
+                <div class="mushaf-container">
+                    <div class="mushaf-page" id="mushaf-content">
+                        <div class="mushaf-header">
+                            <span class="juz-info">الجزء الثالث</span>
+                            <span class="hizb-info">الحزب الخامس</span>
+                        </div>
+                        <div class="mushaf-text">
+                            <p class="mushaf-verse">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾</p>
+                            <p class="mushaf-verse">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾</p>
+                            <p class="mushaf-verse">الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾</p>
+                            <p class="mushaf-verse">مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾</p>
+                            <p class="mushaf-verse">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾</p>
+                            <p class="mushaf-verse">اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾</p>
+                            <p class="mushaf-verse">صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ
+                                عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾</p>
+                        </div>
+                        <div class="mushaf-footer">
+                            <span class="page-number">٤٢</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mushaf-navigation">
+                    <button class="nav-btn" id="prev-page-btn"><i class="fas fa-chevron-left"></i> Previous
+                        Page</button>
+                    <button class="nav-btn primary" id="next-page-btn">Next Page <i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+
+            <!-- Chat Screen -->
+            <div id="chat-screen" class="app-screen">
+                <div class="chat-header-bar">
+                    <input type="text" class="chat-search" placeholder="Search conversations...">
+                    <button class="new-chat-btn" id="new-chat-btn"><i class="fas fa-plus"></i></button>
+                </div>
+
+                <div class="chat-tabs">
+                    <button class="chat-tab active" data-tab="direct">Direct</button>
+                    <button class="chat-tab" data-tab="groups">Groups</button>
+                </div>
+
+                <div class="chat-list" id="chat-list">
+                    <!-- Chats will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Chat Conversation Screen -->
+            <div id="conversation-screen" class="app-screen">
+                <div class="conversation-header">
+                    <button class="back-btn" id="conversation-back"><i class="fas fa-arrow-left"></i></button>
+                    <div class="conversation-user">
+                        <img src="https://placehold.co/40x40/13ec5b/102216?text=S" alt="" class="conv-avatar">
+                        <div class="conv-info">
+                            <span class="conv-name" id="conv-name">Sarah Ahmed</span>
+                            <span class="conv-status online" id="conv-status">Online</span>
+                        </div>
+                    </div>
+                    <button class="header-btn"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+
+                <div class="messages-container" id="messages-container">
+                    <!-- Messages will be loaded here -->
+                </div>
+
+                <div class="message-input-bar">
+                    <button class="attach-btn"><i class="fas fa-paperclip"></i></button>
+                    <input type="text" class="message-input" id="message-input" placeholder="Type a message...">
+                    <button class="send-btn" id="send-message-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <!-- Group Chat Screen -->
+            <div id="group-screen" class="app-screen">
+                <div class="conversation-header">
+                    <button class="back-btn" id="group-back"><i class="fas fa-arrow-left"></i></button>
+                    <div class="conversation-user">
+                        <div class="group-avatar">
+                            <img src="https://placehold.co/20x20/13ec5b/102216?text=A">
+                            <img src="https://placehold.co/20x20/d4af37/102216?text=S">
+                            <img src="https://placehold.co/20x20/f97316/102216?text=F">
+                        </div>
+                        <div class="conv-info">
+                            <span class="conv-name" id="group-name">Quran Study Circle</span>
+                            <span class="conv-status" id="group-members">5 members</span>
+                        </div>
+                    </div>
+                    <button class="header-btn" id="group-settings-btn"><i class="fas fa-users-cog"></i></button>
+                </div>
+
+                <div class="messages-container" id="group-messages">
+                    <!-- Group messages will be loaded here -->
+                </div>
+
+                <div class="message-input-bar">
+                    <button class="attach-btn"><i class="fas fa-book-quran"></i></button>
+                    <input type="text" class="message-input" id="group-message-input"
+                        placeholder="Share with the group...">
+                    <button class="send-btn" id="send-group-message-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <!-- Social/Community Screen -->
+            <div id="social-screen" class="app-screen">
+                <div class="feed-tabs">
+                    <button class="feed-tab active" data-feed="following">Following</button>
+                    <button class="feed-tab" data-feed="explore">Explore</button>
+                </div>
+                <div class="compose-box">
+                    <div class="compose-avatar"><img src="https://placehold.co/40x40/13ec5b/102216?text=A" alt=""></div>
+                    <input type="text" placeholder="Share a reflection..." class="compose-input" id="compose-input">
+                    <button class="compose-btn" id="compose-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="feed-container" id="feed-container"></div>
+            </div>
+
+            <!-- Challenges Screen -->
+            <div id="challenges-screen" class="app-screen">
+                <div class="challenges-tabs">
+                    <button class="challenge-tab active">Active</button>
+                    <button class="challenge-tab">Recommended</button>
+                </div>
+                <div class="challenges-container" id="active-challenges"></div>
+                <button class="emerald-btn create-challenge-btn" id="create-challenge-btn">
+                    <i class="fas fa-plus"></i> Create Challenge
+                </button>
+            </div>
+
+            <!-- More/Settings Screen -->
+            <div id="more-screen" class="app-screen">
+                <div class="profile-section">
+                    <div class="profile-avatar"><img src="https://placehold.co/64x64/13ec5b/102216?text=A" alt=""></div>
+                    <div class="profile-info">
+                        <h3>Ahmad Khan</h3>
+                        <p>@ahmad_k</p>
+                    </div>
+                    <button class="btn-secondary edit-profile-btn">Edit</button>
+                </div>
+                <div class="profile-stats">
+                    <div class="profile-stat"><span class="stat-number">4,523</span><span
+                            class="stat-desc">Verses</span></div>
+                    <div class="profile-stat"><span class="stat-number">45,230</span><span
+                            class="stat-desc">Hasanat</span></div>
+                    <div class="profile-stat"><span class="stat-number">8</span><span class="stat-desc">Streak</span>
+                    </div>
+                </div>
+                <div class="settings-menu">
+                    <div class="menu-item" id="open-app-blocking"><i class="fas fa-ban"></i><span>App Blocking</span><i
+                            class="fas fa-chevron-right"></i></div>
+                    <div class="menu-item"><i class="fas fa-bullseye"></i><span>Edit Goals</span><i
+                            class="fas fa-chevron-right"></i></div>
+                    <div class="menu-item"><i class="fas fa-font"></i><span>Reading Preferences</span><i
+                            class="fas fa-chevron-right"></i></div>
+                    <div class="menu-item toggle"><i class="fas fa-bell"></i><span>Notifications</span>
+                        <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="menu-item"><i class="fas fa-moon"></i><span>Theme</span><span
+                            class="menu-value">Dark</span></div>
+                    <div class="menu-item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></div>
+                </div>
+            </div>
+
+            <!-- Leaderboard Screen -->
+            <div id="leaderboard-screen" class="app-screen">
+                <div class="leaderboard-tabs">
+                    <button class="lb-tab active">Friends</button>
+                    <button class="lb-tab">Global</button>
+                </div>
+                <div class="your-rank-card">
+                    <span class="rank-label">Your Rank</span>
+                    <span class="rank-value">#47</span>
+                    <span class="rank-hasanat">12,450 hasanat</span>
+                </div>
+                <div class="leaderboard-list" id="leaderboard-list"></div>
+            </div>
+
+            <!-- App Blocking Screen -->
+            <div id="blocking-screen" class="app-screen">
+                <div class="blocking-header">
+                    <button class="back-btn" id="blocking-back"><i class="fas fa-arrow-left"></i></button>
+                    <h2>App Blocking</h2>
+                </div>
+
+                <div class="blocking-status-card" id="blocking-status-card">
+                    <div class="blocking-icon inactive">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="blocking-info">
+                        <h3>Focus Mode</h3>
+                        <p id="blocking-status-text">Disabled</p>
+                    </div>
+                    <label class="toggle-switch large">
+                        <input type="checkbox" id="focus-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="blocking-section">
+                    <h4>Block During Reading</h4>
+                    <p class="section-desc">Selected apps will be blocked while you're reading the Quran.</p>
+
+                    <div class="blocked-apps-list" id="blocked-apps-list">
+                        <!-- Apps will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="blocking-section">
+                    <h4>Schedule</h4>
+                    <p class="section-desc">Automatically enable Focus Mode at specific times.</p>
+
+                    <div class="schedule-options">
+                        <div class="schedule-item" data-schedule="prayer">
+                            <div class="schedule-icon"><i class="fas fa-mosque"></i></div>
+                            <div class="schedule-info">
+                                <span class="schedule-name">After Prayer Times</span>
+                                <span class="schedule-desc">Block apps for 30 min after each prayer</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="schedule-toggle" data-schedule="prayer">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="schedule-item" data-schedule="morning">
+                            <div class="schedule-icon"><i class="fas fa-sun"></i></div>
+                            <div class="schedule-info">
+                                <span class="schedule-name">Morning Routine</span>
+                                <span class="schedule-desc">5:00 AM - 7:00 AM daily</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="schedule-toggle" data-schedule="morning" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="schedule-item" data-schedule="night">
+                            <div class="schedule-icon"><i class="fas fa-moon"></i></div>
+                            <div class="schedule-info">
+                                <span class="schedule-name">Night Wind-down</span>
+                                <span class="schedule-desc">9:00 PM - 11:00 PM daily</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="schedule-toggle" data-schedule="night">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocking-section">
+                    <h4>Stats</h4>
+                    <div class="blocking-stats">
+                        <div class="block-stat">
+                            <span class="block-stat-value">4.5h</span>
+                            <span class="block-stat-label">Focus Time Today</span>
+                        </div>
+                        <div class="block-stat">
+                            <span class="block-stat-value">23</span>
+                            <span class="block-stat-label">Distractions Blocked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-screen="home"><i class="fas fa-home"></i><span>Home</span></button>
+            <button class="nav-item" data-screen="read"><i class="fas fa-book-quran"></i><span>Read</span></button>
+            <button class="nav-item" data-screen="chat"><i class="fas fa-comments"></i><span>Chat</span></button>
+            <button class="nav-item" data-screen="social"><i class="fas fa-users"></i><span>Community</span></button>
+            <button class="nav-item" data-screen="more"><i class="fas fa-ellipsis"></i><span>More</span></button>
+        </nav>
+    </div>
+
+    <!-- Session Complete Modal -->
+    <div id="session-complete-modal" class="modal hidden">
+        <div class="modal-content celebration">
+            <div class="modal-header">
+                <span class="celebration-emoji">✨</span>
+                <h2>Alhamdulillah!</h2>
+                <span class="celebration-emoji">✨</span>
+            </div>
+            <div class="session-stats">
+                <div class="session-stat"><span class="stat-value" id="session-verses">15</span><span
+                        class="stat-label">Verses Read</span></div>
+                <div class="session-stat highlight"><span class="stat-value">📿 <span
+                            id="modal-hasanat">4,230</span></span><span class="stat-label">Hasanat Earned</span></div>
+                <div class="session-stat"><span class="stat-value">🔥 <span id="modal-streak">8</span> days</span><span
+                        class="stat-label">Streak</span></div>
+            </div>
+            <div class="motivation-quote">
+                <p>"The best of you are those who learn the Quran and teach it."</p>
+                <span>— Prophet Muhammad ﷺ</span>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="share-achievement-btn"><i class="fas fa-share"></i> Share</button>
+                <button class="emerald-btn" id="continue-modal-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

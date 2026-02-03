@@ -35,6 +35,7 @@ class ReadingSession(Base, TimestampMixin):
     hasanat_earned: Mapped[int] = mapped_column(BigInteger, default=0)
     goal_achieved: Mapped[bool] = mapped_column(default=False)
     session_type: Mapped[str] = mapped_column(String(20), default="spontaneous")  # scheduled, spontaneous
+    status: Mapped[str] = mapped_column(String(20), default="active")  # active, paused, completed
 
 class VerseReadHistory(Base, TimestampMixin):
     __tablename__ = "verse_read_history"
@@ -42,5 +43,13 @@ class VerseReadHistory(Base, TimestampMixin):
     history_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.user_id"), index=True)
     verse_id: Mapped[int] = mapped_column(ForeignKey("quran_verses.verse_id"))
-    session_id: Mapped[UUID] = mapped_column(ForeignKey("reading_sessions.session_id"))
+    session_id: Mapped[UUID | None] = mapped_column(ForeignKey("reading_sessions.session_id"))
     read_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+class Bookmark(Base, TimestampMixin):
+    __tablename__ = "bookmarks"
+
+    bookmark_id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.user_id"), index=True)
+    verse_id: Mapped[int] = mapped_column(ForeignKey("quran_verses.verse_id"))
+    note: Mapped[str | None] = mapped_column(String(500))
