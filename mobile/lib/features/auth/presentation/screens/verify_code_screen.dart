@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/config/routes/route_constants.dart';
 import 'package:mobile/core/theme/colors.dart';
-import 'package:mobile/features/auth/presentation/providers/auth_provider.dart';
+import 'package:mobile/features/auth/presentation/providers/reset_password_provider.dart';
 import 'package:mobile/shared/widgets/emerald_button.dart';
 import 'package:pinput/pinput.dart';
 
@@ -28,18 +28,18 @@ class _VerifyCodeScreenState extends ConsumerState<VerifyCodeScreen> {
 
   Future<void> _handleSubmit() async {
     if (_pinController.text.length == 6) {
-      await ref.read(authProvider.notifier).verifyCode(_pinController.text);
+      await ref.read(resetPasswordProvider.notifier).verifyCode(_pinController.text);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final AuthState authState = ref.watch(authProvider);
+    final ResetPasswordState resetState = ref.watch(resetPasswordProvider);
 
-    ref.listen<AuthState>(authProvider, (AuthState? previous, AuthState next) {
-      if (next.status == AuthStatus.codeVerified) {
+    ref.listen<ResetPasswordState>(resetPasswordProvider, (ResetPasswordState? previous, ResetPasswordState next) {
+      if (next.status == ResetPasswordStatus.codeVerified) {
         context.push(RouteConstants.resetPassword);
-      } else if (next.errorMessage != null && next.errorMessage!.isNotEmpty) {
+      } else if (next.status == ResetPasswordStatus.error && next.errorMessage != null && next.errorMessage!.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Row(
@@ -115,7 +115,7 @@ class _VerifyCodeScreenState extends ConsumerState<VerifyCodeScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              'Enter the 6-digit code sent to ${authState.email ?? "your email"}',
+              'Enter the 6-digit code sent to ${resetState.email ?? "your email"}',
               style: const TextStyle(color: AppColors.textSecondary, fontSize: 16),
             ),
             const SizedBox(height: 48),
@@ -132,7 +132,7 @@ class _VerifyCodeScreenState extends ConsumerState<VerifyCodeScreen> {
             const SizedBox(height: 48),
             EmeraldButton(
               label: 'Verify',
-              isLoading: authState.status == AuthStatus.loading,
+              isLoading: resetState.status == ResetPasswordStatus.loading,
               onPressed: () => unawaited(_handleSubmit()),
             ),
           ],

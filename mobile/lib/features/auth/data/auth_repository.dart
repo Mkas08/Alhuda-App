@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:mobile/core/constants/api_constants.dart';
 
 class AuthResponse {
   final String accessToken;
@@ -27,7 +28,7 @@ class AuthRepository {
 
   Future<AuthResponse> login(String username, String password) async {
     final Response<dynamic> response = await _dio.post<dynamic>(
-      '/auth/login',
+      ApiConstants.login,
       data: FormData.fromMap(<String, dynamic>{
         'username': username,
         'password': password,
@@ -42,7 +43,7 @@ class AuthRepository {
     required String password,
   }) async {
     await _dio.post<dynamic>(
-      '/auth/register',
+      ApiConstants.register,
       data: <String, dynamic>{
         'email': email,
         'username': username,
@@ -55,7 +56,7 @@ class AuthRepository {
 
   Future<AuthResponse> refreshToken(String refreshToken) async {
     final Response<dynamic> response = await _dio.post<dynamic>(
-      '/auth/refresh',
+      ApiConstants.refresh,
       data: <String, dynamic>{'refresh_token': refreshToken},
     );
     return AuthResponse.fromJson(response.data as Map<String, dynamic>);
@@ -63,14 +64,14 @@ class AuthRepository {
 
   Future<void> forgotPassword(String email) async {
     await _dio.post<dynamic>(
-      '/auth/forgot-password',
+      ApiConstants.forgotPassword,
       data: <String, String>{'email': email},
     );
   }
 
   Future<String> verifyCode(String email, String code) async {
     final Response<dynamic> response = await _dio.post<dynamic>(
-      '/auth/verify-code',
+      ApiConstants.verifyCode,
       data: <String, String>{'email': email, 'code': code},
     );
     return (response.data as Map<String, dynamic>)['reset_token'] as String;
@@ -78,7 +79,7 @@ class AuthRepository {
 
   Future<void> resetPassword(String resetToken, String newPassword) async {
     await _dio.post<dynamic>(
-      '/auth/reset-password',
+      ApiConstants.resetPassword,
       data: <String, String>{
         'reset_token': resetToken,
         'new_password': newPassword,

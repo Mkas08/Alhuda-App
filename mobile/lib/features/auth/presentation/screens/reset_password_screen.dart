@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile/config/routes/route_constants.dart';
 import 'package:mobile/core/theme/colors.dart';
-import 'package:mobile/features/auth/presentation/providers/auth_provider.dart';
+import 'package:mobile/features/auth/presentation/providers/reset_password_provider.dart';
 import 'package:mobile/features/auth/presentation/widgets/auth_field.dart';
 import 'package:mobile/shared/widgets/emerald_button.dart';
 
@@ -30,16 +30,16 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
 
   Future<void> _handleSubmit() async {
     if (_formKey.currentState!.validate()) {
-      await ref.read(authProvider.notifier).resetPassword(_passwordController.text);
+      await ref.read(resetPasswordProvider.notifier).resetPassword(_passwordController.text);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final AuthState authState = ref.watch(authProvider);
+    final ResetPasswordState resetState = ref.watch(resetPasswordProvider);
 
-    ref.listen<AuthState>(authProvider, (AuthState? previous, AuthState next) {
-      if (next.status == AuthStatus.passwordReset) {
+    ref.listen<ResetPasswordState>(resetPasswordProvider, (ResetPasswordState? previous, ResetPasswordState next) {
+      if (next.status == ResetPasswordStatus.success) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: const Row(
@@ -57,7 +57,7 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
         );
         // Navigate to login and clear stack
         context.go(RouteConstants.login);
-      } else if (next.errorMessage != null && next.errorMessage!.isNotEmpty) {
+      } else if (next.status == ResetPasswordStatus.error && next.errorMessage != null && next.errorMessage!.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Row(
@@ -140,7 +140,7 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
               const SizedBox(height: 48),
               EmeraldButton(
                 label: 'Reset Password',
-                isLoading: authState.status == AuthStatus.loading,
+                isLoading: resetState.status == ResetPasswordStatus.loading,
                 onPressed: () => unawaited(_handleSubmit()),
               ),
             ],

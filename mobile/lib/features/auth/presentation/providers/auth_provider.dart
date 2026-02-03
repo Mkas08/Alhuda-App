@@ -10,22 +10,15 @@ enum AuthStatus {
   unauthenticated,
   loading,
   initial,
-  codeSent,
-  codeVerified,
-  passwordReset,
 }
 
 class AuthState {
   final AuthStatus status;
   final String? errorMessage;
-  final String? email;
-  final String? resetToken;
 
   AuthState({
     required this.status,
     this.errorMessage,
-    this.email,
-    this.resetToken,
   });
 
   factory AuthState.initial() => AuthState(status: AuthStatus.initial);
@@ -38,14 +31,10 @@ class AuthState {
   AuthState copyWith({
     AuthStatus? status,
     String? errorMessage,
-    String? email,
-    String? resetToken,
   }) {
     return AuthState(
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
-      email: email ?? this.email,
-      resetToken: resetToken ?? this.resetToken,
     );
   }
 }
@@ -104,64 +93,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<void> logout() async {
     await _secureStorage.clearAuthData();
     state = AuthState.unauthenticated();
-  }
-
-  Future<void> forgotPassword(String email) async {
-    state = state.copyWith(status: AuthStatus.loading, errorMessage: null);
-    try {
-      await _repository.forgotPassword(email);
-      state = state.copyWith(status: AuthStatus.codeSent, email: email);
-    } catch (e) {
-      state = AuthState.unauthenticated(message: NetworkExceptions.getErrorMessage(e));
-    }
-  }
-
-  Future<void> verifyCode(String code) async {
-    final String? email = state.email;
-    if (email == null) {
-      state = AuthState.unauthenticated(message: "Email not found in state");
-      return;
-    }
-    state = state.copyWith(status: AuthStatus.loading);
-    try {
-      final String token = await _repository.verifyCode(email, code);
-      state = state.copyWith(status: AuthStatus.codeVerified, resetToken: token);
-    } catch (e) {
-      state = state.copyWith(
-        status: AuthStatus.unauthenticated, // Or keep previous state? 
-        // Better to go back to 'codeSent' concept or just show error.
-        // If I switch to unauthenticated, I lose 'email'.
-        errorMessage: NetworkExceptions.getErrorMessage(e),
-        // Important: Preserve email so user can retry entering code!
-        // But 'unauthenticated' factory recreates state.
-        // I should use copyWith for error usually.
-        // But existing code uses Maybe factory.
-        // Let's use copyWith for error to preserve email.
-      );
-      // Wait, if I use copyWith(status: unauthenticated), I preserve email.
-       state = state.copyWith(
-        status: AuthStatus.codeSent, // Stay on verify screen?
-        errorMessage: NetworkExceptions.getErrorMessage(e)
-      );
-    }
-  }
-
-  Future<void> resetPassword(String newPassword) async {
-    final String? token = state.resetToken;
-    if (token == null) {
-      state = AuthState.unauthenticated(message: "Reset token not found");
-      return;
-    }
-    state = state.copyWith(status: AuthStatus.loading, errorMessage: null);
-    try {
-      await _repository.resetPassword(token, newPassword);
-      state = state.copyWith(status: AuthStatus.passwordReset);
-    } catch (e) {
-       state = state.copyWith(
-        status: AuthStatus.codeVerified, // Stay on reset screen?
-        errorMessage: NetworkExceptions.getErrorMessage(e)
-      );
-    }
   }
 }
 
